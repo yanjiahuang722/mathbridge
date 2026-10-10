@@ -1,0 +1,73 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="description" content="Guided lessons in number theory and probability with worked examples.">
+      <meta name="theme-color" content="#172f50">
+      <title>Learn | MathBridge</title>
+      <link rel="stylesheet" href="./css/style.css">
+      <script src="./js/app.js" defer></script>
+
+    </head>
+    <body>
+      <a class="skip-link" href="#main">Skip to content</a>
+      <header class="site-header">
+        <div class="container nav">
+          <a class="brand" href="./index.html" aria-label="MathBridge home"><span class="brand-mark" aria-hidden="true">∑</span> MathBridge</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+          <nav id="site-nav" class="nav-links" aria-label="Main navigation">
+            <a href="./index.html">Home</a>
+<a href="./learn.html" aria-current="page">Learn</a>
+<a href="./math-lab.html">Math Lab</a>
+<a href="./practice.html">Practice</a>
+<a href="./about.html">About</a>
+          </nav>
+        </div>
+      </header>
+      <main id="main">
+
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Learn</div><span class="eyebrow">Learn</span><h1>Understand the ideas behind the formulas.</h1><p class="lead">Short lessons, carefully worked examples, and links to interactive tools. Start with an idea, then test it.</p></div></section>
+<div class="container content-layout">
+  <aside class="sidebar" aria-label="Lesson navigation"><strong>On this page</strong><a href="#number-theory">Number Theory</a><a href="#divisibility">Divisibility and GCD</a><a href="#bezout">Bézout's identity</a><a href="#congruences">Modular arithmetic</a><a href="#probability">Probability</a><a href="#conditional">Conditional probability</a><a href="#binomial-learn">Binomial distribution</a></aside>
+  <div>
+    <article id="number-theory" class="article-card"><span class="eyebrow">Subject 01</span><h2>Number Theory</h2><p>Number theory studies integers and the structures hidden inside them. Many of its basic questions can be explored using simple algorithms.</p><div class="note"><strong>Key question:</strong> How can we find the greatest common divisor of two large integers efficiently?</div></article>
+    <article id="divisibility" class="article-card"><h2>1. Divisibility and the GCD</h2><p>We say <strong>a divides b</strong>, written a | b, if b = ak for some integer k. The greatest common divisor, gcd(a, b), is the largest positive integer dividing both (when at least one of a, b is nonzero).</p>
+      <h3>The Euclidean algorithm</h3><p>If a = bq + r, then gcd(a, b) = gcd(b, r). Repeating this division eventually gives remainder zero, and the last nonzero remainder is the GCD.</p>
+      <div class="math-block">252 = 2 × 105 + 42
+105 = 2 × 42 + 21
+42  = 2 × 21 + 0
+
+gcd(252, 105) = 21</div>
+      <p>Why does this work? Any integer dividing both a and b also divides r = a − bq, and conversely any integer dividing b and r also divides a = bq + r. The common divisors are the same.</p><a class="button button-quiet" href="./math-lab.html#euclidean">Try different integers →</a>
+    </article>
+    <article id="bezout" class="article-card"><h2>2. Bézout's identity</h2><p>For integers a and b, not both zero, there exist integers x and y such that ax + by = gcd(a, b).</p>
+      <div class="math-block">252(−2) + 105(5) = 21</div><p>The extended Euclidean algorithm computes both the GCD and one pair of coefficients. This also helps us find solutions to equations like ax + by = c and modular inverses.</p><div class="note"><strong>Important:</strong> ax + by = c has an integer solution if and only if gcd(a, b) divides c.</div></article>
+    <article id="congruences" class="article-card"><h2>3. Congruences and modular inverses</h2><p>The notation a ≡ b (mod m) means that m divides a − b, with m a positive integer. A modular inverse of a modulo m is an integer x satisfying ax ≡ 1 (mod m).</p>
+      <div class="math-block">3 × 4 = 12 ≡ 1 (mod 11)
+Therefore 3⁻¹ ≡ 4 (mod 11).</div><p>A modular inverse exists exactly when gcd(a, m) = 1. The extended Euclidean algorithm provides a way to find it.</p><a class="button button-quiet" href="./math-lab.html#inverse">Open modular inverse tool →</a></article>
+    <article id="probability" class="article-card"><span class="eyebrow">Subject 02</span><h2>Probability</h2><p>Probability provides a mathematical language for uncertainty. A useful way to begin is to define the possible outcomes, the event of interest, and the assumptions about their likelihood.</p><div class="note"><strong>Key question:</strong> How does a probability distribution change when we repeat an experiment?</div></article>
+    <article id="conditional" class="article-card"><h2>4. Conditional probability</h2><p>When P(B) &gt; 0, the conditional probability of A given B is the probability of both events occurring, divided by the probability of B.</p>
+      <div class="math-block">P(A | B) = P(A ∩ B) / P(B)</div><p>For example, roll a fair six-sided die. Let A be “the result is even” and B be “the result is greater than 3.” Then B = {4, 5, 6}, and A ∩ B = {4, 6}, so P(A | B) = 2/3.</p><p>Events A and B are independent if P(A ∩ B) = P(A)P(B). When P(B) &gt; 0, that is equivalent to P(A | B) = P(A).</p></article>
+    <article id="binomial-learn" class="article-card"><h2>5. Binomial random variables</h2><p>Suppose we perform n independent Bernoulli trials, each with success probability p. If X counts the successes, then X follows a binomial distribution.</p>
+      <div class="math-block">X ~ Binomial(n, p)
+P(X = k) = C(n, k) p^k (1−p)^(n−k)
+E[X] = np
+Var(X) = np(1−p)</div><p>For 4 fair coin flips, the probability of exactly 2 heads is C(4, 2)(1/2)^4 = 6/16 = 3/8.</p><a href="./math-lab.html#binomial" class="button button-quiet">Visualize the distribution →</a></article>
+    <div class="cta-panel"><div><h2>Turn knowledge into practice.</h2><p>Try topic-based questions and check your reasoning with explanations.</p></div><a href="./practice.html" class="button">Practice now →</a></div>
+  </div>
+</div>
+
+      </main>
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
+          <div class="footer-links">
+            <a href="./about.html">About</a>
+            <a href="./practice.html">Practice</a>
+            <a href="https://github.com/yanjiahuang722/mathbridge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </footer>
+    </body>
+    </html>

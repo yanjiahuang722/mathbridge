@@ -1,0 +1,60 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="description" content="Free Euclidean algorithm, modular inverse, and binomial distribution interactive tools.">
+      <meta name="theme-color" content="#172f50">
+      <title>Math Lab | MathBridge</title>
+      <link rel="stylesheet" href="./css/style.css">
+      <script src="./js/app.js" defer></script>
+      <script src="./js/math-lab.js" defer></script>
+    </head>
+    <body>
+      <a class="skip-link" href="#main">Skip to content</a>
+      <header class="site-header">
+        <div class="container nav">
+          <a class="brand" href="./index.html" aria-label="MathBridge home"><span class="brand-mark" aria-hidden="true">∑</span> MathBridge</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+          <nav id="site-nav" class="nav-links" aria-label="Main navigation">
+            <a href="./index.html">Home</a>
+<a href="./learn.html">Learn</a>
+<a href="./math-lab.html" aria-current="page">Math Lab</a>
+<a href="./practice.html">Practice</a>
+<a href="./about.html">About</a>
+          </nav>
+        </div>
+      </header>
+      <main id="main">
+
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Three interactive tools: step-by-step GCD computation, modular inverses, and a live binomial distribution chart. Everything runs in your browser.</p></div></section>
+<div class="container lab-stack">
+  <section class="lab-card" id="euclidean" aria-labelledby="gcd-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 01</span><h2 id="gcd-title">Euclidean Algorithm Explorer</h2><p>Find the GCD and a pair of Bézout coefficients for two positive integers.</p></div><span class="tag">Step-by-step</span></div>
+    <form id="gcd-form"><div class="field-row"><div class="field"><label for="gcd-a">First integer (a)</label><input id="gcd-a" type="number" step="1" min="1" max="1000000000" value="252" required></div><div class="field"><label for="gcd-b">Second integer (b)</label><input id="gcd-b" type="number" step="1" min="1" max="1000000000" value="105" required></div><button class="button" type="submit">Show steps →</button></div></form>
+    <div class="result" id="gcd-output" role="status" aria-live="polite"></div><p class="field-hint">Try 252 and 105, or enter any positive integers up to 1,000,000,000.</p>
+  </section>
+  <section class="lab-card" id="inverse" aria-labelledby="inverse-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 02</span><h2 id="inverse-title">Modular Inverse Calculator</h2><p>Find x such that ax ≡ 1 (mod m), or see why no inverse exists.</p></div><span class="tag">Extended Euclid</span></div>
+    <form id="inverse-form"><div class="field-row"><div class="field"><label for="inv-a">Integer (a)</label><input id="inv-a" type="number" step="1" min="-1000000000" max="1000000000" value="3" required></div><div class="field"><label for="inv-m">Modulus (m)</label><input id="inv-m" type="number" step="1" min="2" max="1000000000" value="11" required></div><button type="submit" class="button">Find inverse →</button></div></form>
+    <div class="result" id="inverse-output" role="status" aria-live="polite"></div><p class="field-hint">The inverse exists exactly when gcd(a, m) = 1. Modulus must be at least 2.</p>
+  </section>
+  <section class="lab-card" id="binomial" aria-labelledby="binomial-title"><div class="lab-heading"><div><span class="eyebrow">Probability / Tool 03</span><h2 id="binomial-title">Binomial Distribution Explorer</h2><p>Move the sliders to visualize the probability of exactly k successes in n independent trials.</p></div><span class="tag">Live visualization</span></div>
+    <div class="field-row"><div class="field"><label for="bin-n">Number of trials (n): <output id="n-value" for="bin-n">10</output></label><input id="bin-n" type="range" min="1" max="30" step="1" value="10"></div><div class="field"><label for="bin-p">Success probability (p): <output id="p-value" for="bin-p">0.50</output></label><input id="bin-p" type="range" min="0" max="1" step="0.05" value="0.5"></div><div class="field"><label for="bin-k">Highlight successes (k)</label><input id="bin-k" type="number" min="0" max="10" step="1" value="5"></div></div>
+    <div class="plot-wrap"><svg id="bin-chart" viewBox="0 0 760 320" role="img" aria-label="Binomial probability bar chart"></svg></div>
+    <div class="stats-row"><div class="mini-stat"><span>Expected value E[X]</span><strong id="bin-mean">5.00</strong></div><div class="mini-stat"><span>Variance Var(X)</span><strong id="bin-variance">2.50</strong></div><div class="mini-stat"><span>P(X = k)</span><strong id="bin-probability">0.2461</strong></div></div>
+    <p class="field-hint" id="bin-summary" aria-live="polite">For n = 10 and p = 0.50, the probability of exactly 5 successes is 0.2461.</p>
+  </section>
+</div>
+
+      </main>
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
+          <div class="footer-links">
+            <a href="./about.html">About</a>
+            <a href="./practice.html">Practice</a>
+            <a href="https://github.com/yanjiahuang722/mathbridge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </footer>
+    </body>
+    </html>
