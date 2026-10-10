@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathBridge | Interactive Mathematics</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <nav>
+        <strong>MathBridge</strong>
+        <div>
+          <a href="#tools">Math Lab</a>
+          <a href="#about">About</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Explore Mathematics.
+          Build Understanding.</h1>
+      <p>Free interactive mathematics resources
+         for high school and college students.</p>
+      <a class="button" href="#tools">Explore Math Lab</a>
+    </section>
+
+    <section id="tools" class="card">
+      <h2>Euclidean Algorithm Explorer</h2>
+      <p>Enter two positive integers to see
+         how the Euclidean algorithm works.</p>
+
+      <div class="controls">
+        <label>
+          First integer
+          <input id="a" type="number" value="252">
+        </label>
+        <label>
+          Second integer
+          <input id="b" type="number" value="105">
+        </label>
+      </div>
+
+      <button id="run">Show Steps</button>
+      <pre id="output" aria-live="polite"></pre>
+    </section>
+
+    <section id="about" class="about">
+      <h2>About MathBridge</h2>
+      <p>
+        MathBridge makes mathematics more
+        accessible through interactive
+        visualizations, explanations,
+        and free educational resources.
+      </p>
+    </section>
+  </main>
+
+  <footer>MathBridge | Free Math Education</footer>
+  <script src="./js/euclidean.js"></script>
+</body>
+</html>
