@@ -1,79 +1,154 @@
 'use strict';
-const questions = [
-  {id:1,topic:'Number Theory',level:'Easy',q:'What is gcd(84, 30)?',options:['3','6','12','14'],answer:1,hint:'Apply the division algorithm: 84 = 2 × 30 + 24.',explanation:'84 = 2×30 + 24; 30 = 1×24 + 6; 24 = 4×6 + 0. The last nonzero remainder is 6.'},
-  {id:2,topic:'Number Theory',level:'Medium',q:'What is the multiplicative inverse of 3 modulo 11?',options:['2','4','7','8'],answer:1,hint:'Find x such that 3x ≡ 1 (mod 11).',explanation:'3 × 4 = 12 ≡ 1 (mod 11), so the inverse is 4.'},
-  {id:3,topic:'Number Theory',level:'Hard',q:'Which pair (x, y) solves 35x + 22y = 1?',options:['(5, −8)','(−5, 8)','(2, −3)','(−3, 5)'],answer:1,hint:'Use the extended Euclidean algorithm, or substitute each pair.',explanation:'35(−5) + 22(8) = −175 + 176 = 1. Bézout’s identity confirms an integer solution exists because gcd(35, 22) = 1.'},
-  {id:4,topic:'Number Theory',level:'Easy',q:'What is the remainder when 29 is divided by 6?',options:['1','3','5','6'],answer:2,hint:'Write 29 = 6q + r where 0 ≤ r < 6.',explanation:'29 = 6 × 4 + 5, so 29 ≡ 5 (mod 6).'},
-  {id:5,topic:'Probability',level:'Easy',q:'A fair coin is flipped twice independently. What is P(two heads)?',options:['1/2','1/4','3/4','1/8'],answer:1,hint:'Each toss has probability 1/2 of being heads.',explanation:'The two independent events both have probability 1/2, so P(HH) = (1/2)(1/2) = 1/4.'},
-  {id:6,topic:'Probability',level:'Medium',q:'For X ~ Binomial(4, 0.5), what is P(X = 2)?',options:['1/4','1/2','3/8','1/8'],answer:2,hint:'Use C(4, 2) × (1/2)^4.',explanation:'There are C(4,2) = 6 ways to choose the 2 successes. Thus P(X=2) = 6/16 = 3/8.'},
-  {id:7,topic:'Probability',level:'Medium',q:'If P(A ∩ B) = 0.15 and P(B) = 0.30, what is P(A | B)?',options:['0.15','0.30','0.45','0.50'],answer:3,hint:'Use the definition P(A | B) = P(A ∩ B) / P(B).',explanation:'P(A | B) = 0.15 / 0.30 = 0.50.'},
-  {id:8,topic:'Probability',level:'Easy',q:'If X ~ Binomial(10, 0.3), what is E[X]?',options:['0.3','3','7','10'],answer:1,hint:'The binomial mean is n × p.',explanation:'E[X] = np = 10 × 0.3 = 3.'},
-  {id:9,topic:'Probability',level:'Hard',q:'If X ~ Poisson(2), what is P(X = 0)?',options:['e⁻²','2e⁻²','1 − e⁻²','1/2'],answer:0,hint:'Use P(X=k) = e^(−λ) λ^k / k!.',explanation:'With λ = 2 and k = 0, P(X=0) = e^(−2) × 2⁰ / 0! = e⁻².'},
-  {id:10,topic:'Probability',level:'Medium',q:'For three independent fair coin flips, what is P(at least one head)?',options:['1/8','3/8','1/2','7/8'],answer:3,hint:'Use the complement: P(at least one head) = 1 − P(no heads).',explanation:'P(no heads) = (1/2)³ = 1/8, so P(at least one head) = 1 − 1/8 = 7/8.'}
-];
-const state = new Map();
+// MathBridge 2.1 practice engine. Scores & progress remain in this browser.
+const questions=Array.isArray(window.MATHBRIDGE_QUESTIONS)?window.MATHBRIDGE_QUESTIONS:[];
+const BANK_BY_ID=new Map(questions.map(q=>[q.id,q]));
+const SESSION_KEY='mathbridge.practice.2.1.session';
+const HISTORY_KEY='mathbridge.practice.2.1.history';
 const list=document.getElementById('practice-list');
-function e(tag,attrs={},text=''){
+let sessionIds=[];
+let answers={};
+let history={attempts:0,correct:0,perQuestion:{}};
+
+function readStored(key,fallback){
+  try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback;}catch(_){return fallback;}
+}
+function saveStored(key,data){try{localStorage.setItem(key,JSON.stringify(data));}catch(_){/* private storage may be disabled */}}
+function loadHistory(){
+  const data=readStored(HISTORY_KEY,null);
+  if(data && Number.isSafeInteger(data.attempts) && data.attempts>=0 && Number.isSafeInteger(data.correct) && data.correct>=0)
+    history={attempts:data.attempts,correct:data.correct,perQuestion:data.perQuestion||{}};
+}
+function e(tag,attrs={},txt){
   const node=document.createElement(tag);
-  for(const [key,value] of Object.entries(attrs)) {
+  for(const [key,value] of Object.entries(attrs)){
     if(key==='className') node.className=value;
+    else if(key==='disabled') node.disabled=Boolean(value);
     else node.setAttribute(key,String(value));
   }
-  if(text) node.textContent=text;
+  if(txt!==undefined)node.textContent=txt;
   return node;
 }
-function updateScore(){
-  const attempted=[...state.entries()].filter(([,s])=>s.submitted);
-  const correct=attempted.filter(([id,s])=>s.selected===questions.find(q=>q.id===id).answer).length;
-  document.getElementById('score').textContent=`${correct} answered correctly / ${attempted.length} attempted`;
+function shuffle(array){
+  const result=[...array];
+  for(let i=result.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];
+  }
+  return result;
 }
-function render() {
-  list.replaceChildren();
+function selection(){
   const topic=document.getElementById('topic-filter').value;
   const level=document.getElementById('level-filter').value;
-  const visible=questions.filter(q=>(topic==='all'||q.topic===topic)&&(level==='all'||q.level===level));
-  if(!visible.length){ list.append(e('div',{className:'empty-state'},'No questions match those filters.')); return; }
-  for(const q of visible){
-    const saved=state.get(q.id)||{selected:null,submitted:false,showHint:false};
-    const card=e('article',{className:'question-card'});
-    const meta=e('div',{className:'question-top'});
-    meta.append(e('span',{className:'tag'},q.topic),e('span',{className:'tag'},q.level));
-    card.append(meta,e('h2',{},`${q.id}. ${q.q}`));
-    const answers=e('div',{className:'answers',role:'radiogroup','aria-label':`Answers for question ${q.id}`});
-    q.options.forEach((text,index)=>{
-      const label=e('label',{className:'answer-option'});
-      const radio=e('input',{type:'radio',name:`q-${q.id}`,value:index});
-      radio.checked=saved.selected===index;
-      radio.disabled=saved.submitted;
-      radio.addEventListener('change',()=>{state.set(q.id,{...saved,selected:index});});
-      label.append(radio, e('span',{},text));
-      answers.append(label);
-    });
-    card.append(answers);
-    const actions=e('div',{className:'question-actions'});
-    const check=e('button',{type:'button',className:'button'},'Check answer');
-    check.disabled=saved.submitted;
-    check.addEventListener('click',()=>{
-      const selected=card.querySelector('input[type="radio"]:checked');
-      if(!selected){
-        const feedback=e('div',{className:'feedback incorrect',role:'status'},'Choose an answer first.');
-        card.querySelector('.feedback')?.remove();card.append(feedback);return;
-      }
-      state.set(q.id,{...saved,selected:Number(selected.value),submitted:true});
-      render();
-    });
-    const hint=e('button',{type:'button',className:'button button-secondary'},saved.showHint?'Hide hint':'Show hint');
-    hint.addEventListener('click',()=>{const current=state.get(q.id)||saved;state.set(q.id,{...current,showHint:!current.showHint});render();});
-    actions.append(check,hint);card.append(actions);
-    if(saved.showHint)card.append(e('div',{className:'feedback'},`Hint: ${q.hint}`));
-    if(saved.submitted){
-      const correct=saved.selected===q.answer;
-      card.append(e('div',{className:`feedback ${correct?'correct':'incorrect'}`,role:'status'},`${correct?'Correct!':'Not quite.'} ${q.explanation} (Correct answer: ${q.options[q.answer]})`));
-    }
-    list.append(card);
-  }
-  updateScore();
+  const count=document.getElementById('count-filter').value;
+  const matches=questions.filter(q=>(topic==='all'||q.topic===topic)&&(level==='all'||q.level===level));
+  const number=count==='all'?matches.length:Math.min(Number(count),matches.length);
+  return {matches,number};
 }
-document.getElementById('topic-filter').addEventListener('change',render);
-document.getElementById('level-filter').addEventListener('change',render);
-render();
+function updateSelectionNote(){
+  const {matches,number}=selection();
+  document.getElementById('selection-note').textContent=`${matches.length} matching questions; the next set will contain ${number}. Press Generate to use these filters.`;
+}
+function saveSession(){
+  saveStored(SESSION_KEY,{ids:sessionIds,answers});
+}
+function loadSession(){
+  const stored=readStored(SESSION_KEY,null);
+  if(!stored || !Array.isArray(stored.ids) || !stored.ids.length || !stored.ids.every(id=>BANK_BY_ID.has(id)))return false;
+  sessionIds=stored.ids;
+  const data=stored.answers&&typeof stored.answers==='object'?stored.answers:{};
+  answers={};
+  for(const id of sessionIds){
+    const old=data[id];
+    const q=BANK_BY_ID.get(id);
+    if(old && Number.isInteger(old.selected) && old.selected>=0 && old.selected<q.options.length){
+      answers[id]={selected:old.selected,submitted:Boolean(old.submitted),showHint:Boolean(old.showHint)};
+    }else{answers[id]={selected:null,submitted:false,showHint:false};}
+  }
+  return true;
+}
+function startSession(){
+  const {matches,number}=selection();
+  sessionIds=shuffle(matches).slice(0,number).map(q=>q.id);
+  answers=Object.fromEntries(sessionIds.map(id=>[id,{selected:null,submitted:false,showHint:false}]));
+  saveSession();render();
+}
+function updateStats(){
+  const checked=sessionIds.filter(id=>answers[id]?.submitted).length;
+  const correct=sessionIds.filter(id=>answers[id]?.submitted && answers[id].selected===BANK_BY_ID.get(id).answer).length;
+  document.getElementById('score').textContent=`${correct} / ${checked}`;
+  document.getElementById('accuracy').textContent=checked?`${Math.round(correct/checked*100)}%`:'—';
+  document.getElementById('session-count').textContent=`${checked} / ${sessionIds.length}`;
+  document.getElementById('lifetime').textContent=String(history.attempts);
+  const p=document.getElementById('practice-progress');
+  p.setAttribute('aria-valuemax',String(sessionIds.length));p.setAttribute('aria-valuenow',String(checked));
+  document.getElementById('practice-progress-fill').style.width=`${sessionIds.length?100*checked/sessionIds.length:0}%`;
+  const finish=document.getElementById('session-finish');
+  const complete=!!sessionIds.length && checked===sessionIds.length;
+  finish.hidden=!complete;
+  if(complete){
+    finish.replaceChildren(e('strong',{},`Session complete: ${correct} / ${checked} correct (${Math.round(correct/checked*100)}%).`),
+      e('p',{},'Read the explanations above. Change your filters and choose “Generate question set” to practice again.'));
+  }else{finish.replaceChildren();}
+}
+function checkAnswer(id){
+  const s=answers[id],q=BANK_BY_ID.get(id);
+  if(s.submitted)return;
+  if(s.selected===null){
+    const note=document.getElementById(`question-warning-${id}`);
+    note.hidden=false;note.textContent='Choose an answer before checking.';
+    return;
+  }
+  s.submitted=true;
+  const isCorrect=s.selected===q.answer;
+  history.attempts++;
+  if(isCorrect)history.correct++;
+  history.perQuestion[id]={attempts:(history.perQuestion[id]?.attempts||0)+1,correct:(history.perQuestion[id]?.correct||0)+(isCorrect?1:0)};
+  saveStored(HISTORY_KEY,history);saveSession();render();
+}
+function renderQuestion(q,num){
+  const saved=answers[q.id];
+  const card=e('article',{className:'question-card',id:`practice-${q.id}`});
+  const top=e('div',{className:'question-top'});
+  top.append(e('span',{className:'tag'},q.topic),e('span',{className:'tag'},q.level),e('span',{className:'tag'},q.unit),e('span',{className:'question-number'},`Question ${num} of ${sessionIds.length}`));
+  card.append(top,e('h2',{className:'question-title'},q.q));
+  const choices=e('div',{className:'answers',role:'radiogroup','aria-label':`Answer choices for question ${num}`});
+  q.options.forEach((option,i)=>{
+    const label=e('label',{className:'answer-option'+(saved.submitted && i===q.answer?' is-correct':'')+(saved.submitted && i===saved.selected && i!==q.answer?' is-incorrect':'')});
+    const input=e('input',{type:'radio',name:`answer-${q.id}`,value:i});
+    input.checked=saved.selected===i;
+    input.disabled=saved.submitted;
+    input.addEventListener('change',()=>{saved.selected=i;saveSession();const warning=document.getElementById(`question-warning-${q.id}`);warning.hidden=true;});
+    label.append(input,e('span',{},option));choices.append(label);
+  });
+  card.append(choices);
+  const actions=e('div',{className:'question-actions'});
+  const check=e('button',{className:'button',type:'button',disabled:saved.submitted},saved.submitted?'Checked ✓':'Check answer');
+  check.addEventListener('click',()=>checkAnswer(q.id));
+  const hint=e('button',{className:'button button-secondary',type:'button'},saved.showHint?'Hide hint':'Show hint');
+  hint.addEventListener('click',()=>{saved.showHint=!saved.showHint;saveSession();render();});
+  actions.append(check,hint);card.append(actions);
+  const warning=e('div',{id:`question-warning-${q.id}`,className:'feedback incorrect',role:'status'});
+  warning.hidden=true;card.append(warning);
+  if(saved.showHint)card.append(e('div',{className:'feedback'},`Hint: ${q.hint}`));
+  if(saved.submitted){
+    const good=saved.selected===q.answer;
+    card.append(e('div',{className:`feedback ${good?'correct':'incorrect'}`,role:'status'},
+      `${good?'Correct!':'Not quite.'} ${q.explanation} Correct answer: ${q.options[q.answer]}.`));
+  }
+  return card;
+}
+function render(){
+  list.replaceChildren();
+  sessionIds.forEach((id,i)=>list.append(renderQuestion(BANK_BY_ID.get(id),i+1)));
+  document.getElementById('question-count-label').textContent=`${sessionIds.length} questions`;
+  updateStats();updateSelectionNote();
+}
+for(const id of ['topic-filter','level-filter','count-filter']) document.getElementById(id).addEventListener('change',updateSelectionNote);
+document.getElementById('new-session').addEventListener('click',startSession);
+document.getElementById('clear-practice').addEventListener('click',()=>{
+  if(!confirm('Clear practice history and the current session on this browser?'))return;
+  history={attempts:0,correct:0,perQuestion:{}};
+  try{localStorage.removeItem(HISTORY_KEY);localStorage.removeItem(SESSION_KEY);}catch(_){/* optional */}
+  startSession();
+});
+loadHistory();
+if(!loadSession())startSession();else render();

@@ -3,7 +3,7 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="Free Euclidean algorithm, modular inverse, and binomial distribution interactive tools.">
+      <meta name="description" content="Six interactive mathematics tools: Euclidean algorithms, integer equations, modular inverses, binomial distributions, and the law of large numbers.">
       <meta name="theme-color" content="#172f50">
       <title>Math Lab | MathBridge</title>
       <link rel="stylesheet" href="./css/style.css">
@@ -27,22 +27,73 @@
       </header>
       <main id="main">
 
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Three interactive tools: step-by-step GCD computation, modular inverses, and a live binomial distribution chart. Everything runs in your browser.</p></div></section>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Six hands-on tools in number theory and probability. Explore extended Euclid, solve integer equations, and simulate the law of large numbers. All computations run locally in your browser.</p></div></section>
+<div class="container lab-menu" aria-label="Jump to a math tool">
+  <a href="#euclidean">GCD</a><a href="#extended">Extended Euclid</a>
+  <a href="#diophantine">Integer equations</a><a href="#inverse">Modular inverse</a>
+  <a href="#binomial">Binomial</a><a href="#lln">Law of Large Numbers</a>
+</div>
 <div class="container lab-stack">
   <section class="lab-card" id="euclidean" aria-labelledby="gcd-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 01</span><h2 id="gcd-title">Euclidean Algorithm Explorer</h2><p>Find the GCD and a pair of Bézout coefficients for two positive integers.</p></div><span class="tag">Step-by-step</span></div>
     <form id="gcd-form"><div class="field-row"><div class="field"><label for="gcd-a">First integer (a)</label><input id="gcd-a" type="number" step="1" min="1" max="1000000000" value="252" required></div><div class="field"><label for="gcd-b">Second integer (b)</label><input id="gcd-b" type="number" step="1" min="1" max="1000000000" value="105" required></div><button class="button" type="submit">Show steps →</button></div></form>
     <div class="result" id="gcd-output" role="status" aria-live="polite"></div><p class="field-hint">Try 252 and 105, or enter any positive integers up to 1,000,000,000.</p>
   </section>
-  <section class="lab-card" id="inverse" aria-labelledby="inverse-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 02</span><h2 id="inverse-title">Modular Inverse Calculator</h2><p>Find x such that ax ≡ 1 (mod m), or see why no inverse exists.</p></div><span class="tag">Extended Euclid</span></div>
+
+<section class="lab-card" id="extended" aria-labelledby="extended-title">
+  <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 02</span><h2 id="extended-title">Extended Euclidean Algorithm</h2>
+  <p>Track the remainders and Bézout coefficients to construct integers x, y satisfying ax + by = gcd(a, b).</p></div><span class="tag">Coefficient table</span></div>
+  <form id="extended-form" class="field-row">
+    <div class="field"><label for="ext-a">Integer a</label><input type="number" id="ext-a" value="240" step="1" min="-1000000000" max="1000000000" required></div>
+    <div class="field"><label for="ext-b">Integer b</label><input type="number" id="ext-b" value="46" step="1" min="-1000000000" max="1000000000" required></div>
+    <button class="button" type="submit">Find coefficients →</button>
+  </form>
+  <div id="extended-output" class="result" role="status" aria-live="polite"></div>
+  <div class="coefficient-table-wrap" id="extended-table-wrap" aria-live="polite"></div>
+  <p class="field-hint">Try 240, 46 to see 240(−9) + 46(47) = 2. Negative integers and zero are supported (except a = b = 0).</p>
+</section>
+<section class="lab-card" id="diophantine" aria-labelledby="dio-title">
+  <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 03</span><h2 id="dio-title">Linear Diophantine Equation Solver</h2>
+  <p>Solve ax + by = c over the integers. Find a particular solution, then describe every integer solution using a parameter t.</p></div><span class="tag">All solutions</span></div>
+  <form id="dio-form" class="field-row">
+    <div class="field"><label for="dio-a">Coefficient a</label><input id="dio-a" type="number" step="1" min="-1000000000" max="1000000000" value="35" required></div>
+    <div class="field"><label for="dio-b">Coefficient b</label><input id="dio-b" type="number" step="1" min="-1000000000" max="1000000000" value="22" required></div>
+    <div class="field"><label for="dio-c">Constant c</label><input id="dio-c" type="number" step="1" min="-1000000000" max="1000000000" value="1" required></div>
+    <button class="button" type="submit">Solve equation →</button>
+  </form>
+  <div id="dio-output" class="result" role="status" aria-live="polite"></div>
+  <p class="field-hint">The equation has integer solutions precisely when gcd(a,b) divides c, with a special case when a=b=0.</p>
+</section>
+  <section class="lab-card" id="inverse" aria-labelledby="inverse-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 04</span><h2 id="inverse-title">Modular Inverse Calculator</h2><p>Find x such that ax ≡ 1 (mod m), or see why no inverse exists.</p></div><span class="tag">Extended Euclid</span></div>
     <form id="inverse-form"><div class="field-row"><div class="field"><label for="inv-a">Integer (a)</label><input id="inv-a" type="number" step="1" min="-1000000000" max="1000000000" value="3" required></div><div class="field"><label for="inv-m">Modulus (m)</label><input id="inv-m" type="number" step="1" min="2" max="1000000000" value="11" required></div><button type="submit" class="button">Find inverse →</button></div></form>
     <div class="result" id="inverse-output" role="status" aria-live="polite"></div><p class="field-hint">The inverse exists exactly when gcd(a, m) = 1. Modulus must be at least 2.</p>
   </section>
-  <section class="lab-card" id="binomial" aria-labelledby="binomial-title"><div class="lab-heading"><div><span class="eyebrow">Probability / Tool 03</span><h2 id="binomial-title">Binomial Distribution Explorer</h2><p>Move the sliders to visualize the probability of exactly k successes in n independent trials.</p></div><span class="tag">Live visualization</span></div>
+  <section class="lab-card" id="binomial" aria-labelledby="binomial-title"><div class="lab-heading"><div><span class="eyebrow">Probability / Tool 05</span><h2 id="binomial-title">Binomial Distribution Explorer</h2><p>Move the sliders to visualize the probability of exactly k successes in n independent trials.</p></div><span class="tag">Live visualization</span></div>
     <div class="field-row"><div class="field"><label for="bin-n">Number of trials (n): <output id="n-value" for="bin-n">10</output></label><input id="bin-n" type="range" min="1" max="30" step="1" value="10"></div><div class="field"><label for="bin-p">Success probability (p): <output id="p-value" for="bin-p">0.50</output></label><input id="bin-p" type="range" min="0" max="1" step="0.05" value="0.5"></div><div class="field"><label for="bin-k">Highlight successes (k)</label><input id="bin-k" type="number" min="0" max="10" step="1" value="5"></div></div>
     <div class="plot-wrap"><svg id="bin-chart" viewBox="0 0 760 320" role="img" aria-label="Binomial probability bar chart"></svg></div>
     <div class="stats-row"><div class="mini-stat"><span>Expected value E[X]</span><strong id="bin-mean">5.00</strong></div><div class="mini-stat"><span>Variance Var(X)</span><strong id="bin-variance">2.50</strong></div><div class="mini-stat"><span>P(X = k)</span><strong id="bin-probability">0.2461</strong></div></div>
     <p class="field-hint" id="bin-summary" aria-live="polite">For n = 10 and p = 0.50, the probability of exactly 5 successes is 0.2461.</p>
   </section>
+
+<section class="lab-card" id="lln" aria-labelledby="lln-title">
+  <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 06</span><h2 id="lln-title">Law of Large Numbers Simulator</h2>
+  <p>Generate independent Bernoulli trials. Watch the observed proportion of successes fluctuate and (typically) stabilize near the true probability p as the sample grows.</p></div><span class="tag">Random simulation</span></div>
+  <div class="field-row">
+    <div class="field"><label for="lln-p">True success probability p: <output id="lln-p-value" for="lln-p">0.60</output></label><input id="lln-p" type="range" min="0" max="1" step="0.05" value="0.60"></div>
+    <div class="field"><label for="lln-trials">Trials per run</label><select id="lln-trials"><option value="100">100 trials</option><option value="500" selected>500 trials</option><option value="1000">1,000 trials</option><option value="5000">5,000 trials</option></select></div>
+    <button id="lln-run" class="button" type="button">Run simulation →</button>
+    <button id="lln-add" class="button button-secondary" type="button">Add 100 trials</button>
+    <button id="lln-reset" class="button button-secondary" type="button">Reset</button>
+  </div>
+  <div class="plot-wrap"><svg id="lln-chart" viewBox="0 0 760 360" role="img" aria-label="Running observed success rate versus trial count and true probability"></svg></div>
+  <div class="stats-row">
+    <div class="mini-stat"><span>Trials</span><strong id="lln-n">0</strong></div>
+    <div class="mini-stat"><span>Successes</span><strong id="lln-successes">0</strong></div>
+    <div class="mini-stat"><span>Observed proportion</span><strong id="lln-proportion">—</strong></div>
+    <div class="mini-stat"><span>Difference from p</span><strong id="lln-error">—</strong></div>
+  </div>
+  <p id="lln-summary" class="field-hint" role="status" aria-live="polite">Click “Run simulation” to start an independent sequence of random trials.</p>
+  <div class="note"><strong>What the theorem means:</strong> For independent Bernoulli trials with fixed probability p, the sample proportion converges to p in probability (and, in fact, almost surely). A single finite run may still wander away from p. Changing p resets the current experiment.</div>
+</section>
 </div>
 
       </main>
