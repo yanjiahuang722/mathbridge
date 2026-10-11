@@ -3,12 +3,13 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="An interactive practice bank of 48 mathematics questions with subjects, difficulty filters, worked explanations and saved progress.">
+      <meta name="description" content="An interactive practice bank of introductory and advanced mathematics questions with subjects, difficulty filters, worked explanations and saved progress.">
       <meta name="theme-color" content="#172f50">
       <title>Practice | MathBridge</title>
       <link rel="stylesheet" href="./css/style.css">
       <script src="./js/app.js" defer></script>
       <script src="./js/questions-data.js" defer></script>
+      <script src="./js/advanced-questions.js" defer></script>
       <script src="./js/practice.js" defer></script>
     </head>
     <body>
@@ -29,12 +30,14 @@
       <main id="main">
 
 
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Practice</div><span class="eyebrow">Practice studio</span><h1>Practice the idea, not just the answer.</h1><p class="lead">48 original questions across Number Theory and Probability. Select a subject and difficulty, choose a short or long set, and see explanations for every answer.</p></div></section>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Practice</div><span class="eyebrow">Practice studio</span><h1>Practice the idea, not just the answer.</h1><p class="lead">165 original questions across Number Theory and Probability, including advanced topics. Select a subject and difficulty, choose a short or long set, and see explanations for every answer.</p></div></section>
 <div class="container practice-workspace">
   <section class="practice-panel" aria-labelledby="practice-settings-title">
     <div class="practice-panel-heading"><div><span class="eyebrow">Create a question set</span><h2 id="practice-settings-title">Your practice session</h2></div><span class="tag">No account needed</span></div>
     <div class="practice-controls">
       <div class="field"><label for="topic-filter">Subject</label><select id="topic-filter"><option value="all">All subjects</option><option value="Number Theory">Number Theory</option><option value="Probability">Probability</option></select></div>
+      <div class="field"><label for="stage-filter">Course level</label><select id="stage-filter"><option value="all">All topics</option><option value="Foundation">Foundations</option><option value="Advanced">Advanced</option></select></div>
+      <div class="field"><label for="unit-filter">Specific topic</label><select id="unit-filter"><option value="all">All topics</option></select></div>
       <div class="field"><label for="level-filter">Difficulty</label><select id="level-filter"><option value="all">All levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
       <div class="field"><label for="count-filter">Questions per set</label><select id="count-filter"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions</option><option value="all">All matching questions</option></select></div>
       <button type="button" class="button" id="new-session">Generate question set →</button>

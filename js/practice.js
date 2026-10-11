@@ -39,7 +39,9 @@ function selection(){
   const topic=document.getElementById('topic-filter').value;
   const level=document.getElementById('level-filter').value;
   const count=document.getElementById('count-filter').value;
-  const matches=questions.filter(q=>(topic==='all'||q.topic===topic)&&(level==='all'||q.level===level));
+  const stage=document.getElementById('stage-filter').value;
+  const unit=document.getElementById('unit-filter').value;
+  const matches=questions.filter(q=>(topic==='all'||q.topic===topic)&&(level==='all'||q.level===level)&&(stage==='all'||(stage==='Advanced' ? q.stage==='Advanced' : q.stage!=='Advanced')) && (unit==='all'||q.unit===unit));
   const number=count==='all'?matches.length:Math.min(Number(count),matches.length);
   return {matches,number};
 }
@@ -142,7 +144,19 @@ function render(){
   document.getElementById('question-count-label').textContent=`${sessionIds.length} questions`;
   updateStats();updateSelectionNote();
 }
-for(const id of ['topic-filter','level-filter','count-filter']) document.getElementById(id).addEventListener('change',updateSelectionNote);
+// Update the topic dropdown when subject or foundation/advanced stage changes.
+function syncTopics(){
+  const subject=document.getElementById('topic-filter').value;
+  const stage=document.getElementById('stage-filter').value;
+  const select=document.getElementById('unit-filter');
+  const old=select.value;
+  const topics=[...new Set(questions.filter(q=>(subject==='all'||q.topic===subject)&&(stage==='all'||(stage==='Advanced'?q.stage==='Advanced':q.stage!=='Advanced'))).map(q=>q.unit))].sort();
+  select.replaceChildren(e('option',{value:'all'},'All topics'));
+  topics.forEach(unit=>select.appendChild(e('option',{value:unit},unit)));
+  select.value=topics.includes(old)?old:'all';
+}
+for(const id of ['topic-filter','stage-filter']) document.getElementById(id).addEventListener('change',()=>{syncTopics();updateSelectionNote();});
+for(const id of ['unit-filter','level-filter','count-filter']) document.getElementById(id).addEventListener('change',updateSelectionNote);
 document.getElementById('new-session').addEventListener('click',startSession);
 document.getElementById('clear-practice').addEventListener('click',()=>{
   if(!confirm('Clear practice history and the current session on this browser?'))return;
@@ -151,4 +165,5 @@ document.getElementById('clear-practice').addEventListener('click',()=>{
   startSession();
 });
 loadHistory();
+syncTopics();
 if(!loadSession())startSession();else render();

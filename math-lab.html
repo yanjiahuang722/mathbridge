@@ -3,12 +3,13 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="Six interactive mathematics tools: Euclidean algorithms, integer equations, modular inverses, binomial distributions, and the law of large numbers.">
+      <meta name="description" content="Twelve mathematics tools, including Euler totients, modular powers, generalized CRT, quadratic residues, normal probabilities and the central limit theorem.">
       <meta name="theme-color" content="#172f50">
       <title>Math Lab | MathBridge</title>
       <link rel="stylesheet" href="./css/style.css">
       <script src="./js/app.js" defer></script>
       <script src="./js/math-lab.js" defer></script>
+      <script src="./js/advanced-lab.js" defer></script>
     </head>
     <body>
       <a class="skip-link" href="#main">Skip to content</a>
@@ -27,11 +28,12 @@
       </header>
       <main id="main">
 
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Six hands-on tools in number theory and probability. Explore extended Euclid, solve integer equations, and simulate the law of large numbers. All computations run locally in your browser.</p></div></section>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Twelve hands-on tools in number theory and probability. Explore extended Euclid, solve integer equations, and simulate the law of large numbers. All computations run locally in your browser.</p></div></section>
 <div class="container lab-menu" aria-label="Jump to a math tool">
   <a href="#euclidean">GCD</a><a href="#extended">Extended Euclid</a>
   <a href="#diophantine">Integer equations</a><a href="#inverse">Modular inverse</a>
   <a href="#binomial">Binomial</a><a href="#lln">Law of Large Numbers</a>
+  <a href="#totient">Euler φ</a><a href="#modpow">Modular powers</a><a href="#crt">CRT</a><a href="#quadratic">Quadratic residues</a><a href="#normal">Normal CDF</a><a href="#clt">CLT simulator</a>
 </div>
 <div class="container lab-stack">
   <section class="lab-card" id="euclidean" aria-labelledby="gcd-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 01</span><h2 id="gcd-title">Euclidean Algorithm Explorer</h2><p>Find the GCD and a pair of Bézout coefficients for two positive integers.</p></div><span class="tag">Step-by-step</span></div>
@@ -93,6 +95,41 @@
   </div>
   <p id="lln-summary" class="field-hint" role="status" aria-live="polite">Click “Run simulation” to start an independent sequence of random trials.</p>
   <div class="note"><strong>What the theorem means:</strong> For independent Bernoulli trials with fixed probability p, the sample proportion converges to p in probability (and, in fact, almost surely). A single finite run may still wander away from p. Changing p resets the current experiment.</div>
+</section>
+
+<!-- Version 2.3 advanced interactive mathematics tools -->
+<section class="lab-card" id="totient" aria-labelledby="totient-title">
+ <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 07 · Advanced</span><h2 id="totient-title">Euler Totient &amp; Divisor Explorer</h2><p>Factor n and compute φ(n), τ(n), σ(n), and the sum of the Möbius function across divisors.</p></div><span class="tag">Arithmetic functions</span></div>
+ <form id="totient-form" class="field-row"><div class="field"><label for="totient-n">Positive integer n</label><input id="totient-n" type="number" min="1" max="1000000000" step="1" value="360" required></div><button class="button" type="submit">Explore factors →</button></form>
+ <div class="result" id="totient-output" aria-live="polite"></div><p class="field-hint">Valid for 1 ≤ n ≤ 1,000,000,000; calculated by integer prime factorization.</p>
+</section>
+<section class="lab-card" id="modpow" aria-labelledby="modpow-title">
+ <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 08 · Advanced</span><h2 id="modpow-title">Fast Modular Exponentiation</h2><p>Compute a^e modulo m using binary exponentiation, without ever expanding a giant power.</p></div><span class="tag">Repeated squaring</span></div>
+ <form id="modpow-form" class="field-row"><div class="field"><label for="pow-a">Base a</label><input id="pow-a" type="number" step="1" value="7" required></div><div class="field"><label for="pow-e">Exponent e ≥ 0</label><input id="pow-e" type="number" min="0" max="1000000000000" step="1" value="128" required></div><div class="field"><label for="pow-m">Modulus m ≥ 2</label><input id="pow-m" type="number" min="2" max="1000000000" step="1" value="13" required></div><button class="button" type="submit">Calculate →</button></form>
+ <div class="result" id="modpow-output" aria-live="polite"></div>
+</section>
+<section class="lab-card" id="crt" aria-labelledby="crt-title">
+ <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 09 · Advanced</span><h2 id="crt-title">Generalized Chinese Remainder Theorem</h2><p>Find all integers x satisfying two congruences, including the case of non-coprime moduli.</p></div><span class="tag">Compatible congruences</span></div>
+ <form id="crt-form" class="field-row"><div class="field"><label for="crt-a">x ≡ a (mod m)</label><input id="crt-a" type="number" value="1" step="1" required></div><div class="field"><label for="crt-m">Modulus m</label><input id="crt-m" type="number" min="2" max="1000000000" value="4" required></div><div class="field"><label for="crt-b">x ≡ b (mod n)</label><input id="crt-b" type="number" value="3" step="1" required></div><div class="field"><label for="crt-n">Modulus n</label><input id="crt-n" type="number" min="2" max="1000000000" value="6" required></div><button class="button" type="submit">Combine →</button></form>
+ <div class="result" id="crt-output" aria-live="polite"></div>
+</section>
+<section class="lab-card" id="quadratic" aria-labelledby="quadratic-title">
+ <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 10 · Advanced</span><h2 id="quadratic-title">Quadratic Residues &amp; Euler's Criterion</h2><p>Determine whether a is a square modulo an odd prime p and display every square root.</p></div><span class="tag">Legendre symbol</span></div>
+ <form id="quadratic-form" class="field-row"><div class="field"><label for="qr-a">Integer a</label><input id="qr-a" type="number" value="5" step="1" required></div><div class="field"><label for="qr-p">Odd prime p (≤ 997)</label><input id="qr-p" type="number" min="3" max="997" value="11" step="1" required></div><button class="button" type="submit">Find residues →</button></form>
+ <div class="result" id="quadratic-output" aria-live="polite"></div><p class="field-hint">Legendre symbol is displayed only when a is nonzero modulo p; otherwise symbol equals 0.</p>
+</section>
+<section class="lab-card" id="normal" aria-labelledby="normal-title">
+ <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 11 · Advanced</span><h2 id="normal-title">Normal Distribution Probability Explorer</h2><p>Standardize interval endpoints and approximate P(a ≤ X ≤ b) for X ~ N(μ, σ²).</p></div><span class="tag">Normal CDF</span></div>
+ <form id="normal-form" class="field-row"><div class="field"><label for="normal-mu">Mean μ</label><input id="normal-mu" type="number" value="0" step="any" required></div><div class="field"><label for="normal-sigma">Standard deviation σ</label><input id="normal-sigma" type="number" value="1" min="0.000001" step="any" required></div><div class="field"><label for="normal-a">Lower endpoint a</label><input id="normal-a" type="number" value="-1" step="any" required></div><div class="field"><label for="normal-b">Upper endpoint b</label><input id="normal-b" type="number" value="1" step="any" required></div><button class="button" type="submit">Find probability →</button></form>
+ <div class="result" id="normal-output" aria-live="polite"></div><div class="plot-wrap"><svg id="normal-chart" viewBox="0 0 760 260" role="img" aria-label="Normal density curve with highlighted probability interval"></svg></div>
+ <p class="field-hint">CDF computed with a standard numerical approximation; displayed values are approximate.</p>
+</section>
+<section class="lab-card" id="clt" aria-labelledby="clt-title">
+ <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 12 · Advanced</span><h2 id="clt-title">Central Limit Theorem Simulator</h2><p>Sample averages of independent Uniform(0,1) variables. Compare standardized averages to N(0,1).</p></div><span class="tag">Monte Carlo simulation</span></div>
+ <div class="field-row"><div class="field"><label for="clt-n">Sample size n</label><input id="clt-n" type="range" min="1" max="60" step="1" value="12"><output id="clt-n-value">12</output></div><div class="field"><label for="clt-reps">Independent repetitions</label><select id="clt-reps"><option value="250">250</option><option value="1000" selected>1,000</option><option value="2500">2,500</option></select></div><button id="clt-run" class="button" type="button">Run CLT experiment →</button></div>
+ <div class="plot-wrap"><svg id="clt-chart" viewBox="0 0 760 325" role="img" aria-label="Histogram of standardized sample means compared with the standard normal density"></svg></div>
+ <div class="stats-row"><div class="mini-stat"><span>Mean of standardized values</span><strong id="clt-mean">—</strong></div><div class="mini-stat"><span>Variance of standardized values</span><strong id="clt-variance">—</strong></div></div><p id="clt-summary" class="field-hint" aria-live="polite">Press Run to generate independent samples. Bars are simulated; the red curve is the standard normal density.</p>
+ <div class="note"><strong>Mathematical note:</strong> For each repetition, Z = √(12n)(X̄−1/2). The CLT predicts Z approaches a standard normal distribution as n grows, not that finite-n data become exactly normal.</div>
 </section>
 </div>
 

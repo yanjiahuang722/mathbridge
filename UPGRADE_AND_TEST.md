@@ -21,3 +21,9 @@ Suggested commit summary: `Add 39 advanced Number Theory and Probability lessons
 - Preserved original `js/lessons-data.js`, Math Lab code, Practice code, and local-storage completion key.
 
 **Scope:** Curriculum covers a substantial selection of topics from later chapters of Burton and Ross, not every theorem, derivation, proof, or textbook exercise. Material is not official, licensed, or endorsed by the publishers.
+
+## Version 2.3 quick smoke test
+1. `math-lab.html`: φ(360)=96; CRT x≡1 mod4 and x≡3 mod6 → x≡9 mod12; Normal N(0,1) interval [-1,1] ≈0.682689.
+2. `math-lab.html`: Quadratic residue a=5,p=11 → (5/11)=1; CLT Run creates an SVG histogram.
+3. `practice.html`: Course level Advanced → 117 matches; Number Theory Advanced → 51; Probability Advanced → 66. Choose a specific topic and generate five questions.
+4. Answer one and refresh: the score remains saved locally. The existing 16+39 Learn course pages still open.

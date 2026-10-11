@@ -2266,5 +2266,7 @@
   "source": "Ross §7.8"
  }
 ];
+ const labAnchors = {"nt-fermat": "modpow", "nt-wilson": "modpow", "nt-arith-func": "totient", "nt-mobius": "totient", "nt-euler": "modpow", "nt-primitive": "modpow", "nt-indices": "modpow", "nt-quadratic": "quadratic", "nt-reciprocity": "quadratic", "nt-rsa": "modpow", "nt-special": "totient", "nt-modern": "quadratic", "pr-normal": "normal", "pr-clt": "clt", "pr-slln": "lln", "pr-continuous": "normal", "pr-poisson-approx": "binomial"};
+ advanced.forEach(lesson => { if(labAnchors[lesson.id]) { lesson.lab = "./math-lab.html#" + labAnchors[lesson.id]; lesson.labLabel = "Try an interactive Math Lab tool"; } });
  window.MATHBRIDGE_LESSONS = [...base.filter(x=>x.subject==='Number Theory'), ...advanced.filter(x=>x.subject==='Number Theory'), ...base.filter(x=>x.subject==='Probability'), ...advanced.filter(x=>x.subject==='Probability')];
 })();

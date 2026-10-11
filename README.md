@@ -1,3 +1,35 @@
+# MathBridge 2.3 — Advanced Math Lab & Practice
+
+**Version 2.3:** 55 guided lessons (16 foundations + 39 advanced), 165 lesson checkpoints, **165 separate Practice questions** (48 original + 117 new advanced), **12 interactive Math Lab tools** (6 original + 6 advanced). This is an original educational implementation informed by general topics in Burton and Ross, not a reproduction of their copyrighted exercises.
+
+## How to upgrade your GitHub Pages repository
+
+1. Keep a backup or use the Git commit history to restore if needed.
+2. Extract this ZIP; copy its **contents** (not the enclosing folder) into your existing `mathbridge` repository root, replacing matching files.
+3. In VS Code, run Live Server and test `math-lab.html` and `practice.html`.
+4. GitHub Desktop → Summary `Expand advanced Math Lab and Practice to 2.3` → Commit to main → Push origin.
+5. After GitHub Pages updates, test the public URL. Your original GitHub Pages and repository URLs do not change.
+
+## New tools in Math Lab
+- Euler totient, Möbius and divisor functions (integer factorization)
+- Fast modular exponentiation (binary algorithm)
+- Generalized CRT for two possibly noncoprime moduli
+- Quadratic residues and Legendre symbols for small odd primes
+- Normal distribution intervals with numerical CDF and visualization
+- Central limit theorem simulation of IID Uniform(0,1) sample means
+
+## Practice
+- Adds 117 new advanced questions; three original exercises per each of the 39 advanced Learn topics.
+- Adds **Course level: All topics / Foundations / Advanced** while retaining subject, topic, difficulty, question count, hints, explanations, grades, and local-only history.
+- Previous history is retained using the same storage keys (`mathbridge.practice.2.1.*`); new question IDs use A001...A117 so IDs do not collide with old questions.
+- The original 48 question objects remain in `js/questions-data.js`; new ones live in `js/advanced-questions.js`. Edit these files to maintain the question bank.
+
+## Scope and assumptions
+- Number theory tools limit inputs to avoid long computations or JavaScript precision errors; modular arithmetic uses BigInt.
+- The normal CDF is a numerical approximation; CLT histogram results are random and change on each run.
+- Progress is saved in this browser via localStorage; there is no sign-in or remote data collection.
+- This release is an instructional sample, not a complete replacement for an undergraduate textbook. Review explanations before using them in formal coursework.
+
 # MathBridge 2.2 — Extended Learning Curriculum
 
 **New in 2.2:** 39 original advanced mini-lessons (17 Number Theory, 22 Probability), each with worked calculations, caveats, and 3 independently written checkpoint questions. Total **55 Learn lessons** and **165 lesson checkpoints**, plus the existing **48 stand-alone Practice questions** and **6 Math Lab tools**.
