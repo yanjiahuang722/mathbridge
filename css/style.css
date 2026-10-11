@@ -407,3 +407,16 @@ p { margin: 0 0 14px; }
 /* Keep wide coefficient tables and charts inside their own horizontal scrollers on phones. */
 .lab-stack { grid-template-columns:minmax(0,1fr); }
 .lab-card { min-width:0; }
+
+/* MathBridge 2.2: foundation/advanced curriculum filters */
+.level-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 24px;color:#4f6785;font-weight:600;font-size:.9rem}
+.level-toolbar span{margin-right:5px}
+.level-chip{border:1px solid #cddced;border-radius:30px;padding:9px 16px;cursor:pointer;background:white;color:#25466e;font:inherit;font-weight:700}
+.level-chip.active,.level-chip:hover{background:#dceafd;border-color:#91baf1;color:#1554a4}
+.level-chip:focus-visible{outline:3px solid #2678d6;outline-offset:2px}
+
+.curriculum-disclaimer{border-left:3px solid #73acdc;padding:10px 16px;margin:10px 0 26px;background:#f5f9fe;color:#55718d;font-size:.86rem;line-height:1.6}
+/* Keep long advanced lesson sidebars usable on tablets and phones. */
+@media (max-width: 850px) {
+  .lesson-sidebar { max-height: 340px; overflow-y: auto; overscroll-behavior: contain; }
+}

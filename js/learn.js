@@ -6,6 +6,8 @@
   if (!catalog) return;
   const search = document.getElementById('lesson-search');
   const chips = [...document.querySelectorAll('.filter-chip')];
+  const levels = [...document.querySelectorAll('.level-chip')];
+  let stage = 'All';
   const empty = document.getElementById('catalog-empty');
   const count = document.getElementById('progress-caption');
   const fill = document.getElementById('progress-fill');
@@ -36,6 +38,7 @@
     ['Number Theory', 'Probability'].forEach((course, courseIndex) => {
       if (subject !== 'All' && subject !== course) return;
       const subset = lessons.filter(lesson => lesson.subject === course &&
+        (stage==='All' || (stage==='Advanced' ? lesson.level==='Advanced' : lesson.level!=='Advanced')) &&
         [lesson.title, lesson.summary, lesson.level, ...lesson.objectives].join(' ').toLocaleLowerCase().includes(q));
       if (!subset.length) return;
       totalShown += subset.length;
@@ -85,6 +88,11 @@
     setFilters();render();
     if (subject === 'All') history.replaceState(null, '', location.pathname);
     else history.replaceState(null, '', `#${subject==='Number Theory'?'number-theory':'probability'}`);
+  }));
+  levels.forEach(button => button.addEventListener('click', () => {
+    stage = button.dataset.stage;
+    levels.forEach(chip=>{const active=chip.dataset.stage===stage; chip.classList.toggle('active',active); chip.setAttribute('aria-pressed',String(active));});
+    render();
   }));
   search.addEventListener('input', render);
   window.addEventListener('pageshow', render);

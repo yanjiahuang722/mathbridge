@@ -68,8 +68,8 @@
     a.append(number,title,check); sidebar.append(a);
   });
   updateProgress();
-  const globalIndex = lessons.findIndex(l=>l.id===id);
-  const previous = lessons[globalIndex-1]; const next=lessons[globalIndex+1];
+  const courseIndex = sameCourse.findIndex(l=>l.id===id);
+  const previous = sameCourse[courseIndex-1]; const next=sameCourse[courseIndex+1];
   const prevLink=$('lesson-prev'),nextLink=$('lesson-next');
   prevLink.href = previous ? `./lesson.html?id=${encodeURIComponent(previous.id)}` : './learn.html';
   prevLink.textContent=previous ? `← Previous: ${previous.title}` : '← All lessons';

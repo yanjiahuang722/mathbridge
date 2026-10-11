@@ -1,3 +1,19 @@
+# MathBridge 2.2 — Extended Learning Curriculum
+
+**New in 2.2:** 39 original advanced mini-lessons (17 Number Theory, 22 Probability), each with worked calculations, caveats, and 3 independently written checkpoint questions. Total **55 Learn lessons** and **165 lesson checkpoints**, plus the existing **48 stand-alone Practice questions** and **6 Math Lab tools**.
+
+- `js/lessons-data.js`: unchanged original 16 foundation lessons; retaining all old lesson IDs preserves previous completion records.
+- `js/advanced-lessons.js`: 39 additional original lessons. Topic selections are **aligned with** the later parts of David Burton's *Elementary Number Theory*, 7e, and Sheldon Ross's *A First Course in Probability*, 10e. This does not mean every textbook subsection is reproduced or fully covered.
+- `learn.html`: subject filtering plus new **Foundations / Advanced** level filter.
+- `lesson.html`: existing one-page lesson experience (objectives, concept, worked example, three checks, local progress).
+- Existing Math Lab and Practice continue to work without changes.
+
+**Editorial integrity:** Examples, explanations, and quiz questions were newly authored. No textbook problem statements, proprietary page reproductions, or solution manuals are included. Mathematical terminology and the broad order of topics follow the books. Please independently review all content before teaching from it.
+
+**Deployment:** replace the contents (not the enclosing folder) of your GitHub `mathbridge` repository with this package. Test locally with Live Server, then commit and push to `main`. GitHub Pages updates automatically.
+
+---
+
 # MathBridge 2.1
 
 A free, student-built mathematics education website for high-school and introductory college students. Built as a static website (HTML, CSS, JavaScript) and deployable to GitHub Pages.
