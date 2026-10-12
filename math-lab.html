@@ -1,148 +1,150 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="Twelve mathematics tools, including Euler totients, modular powers, generalized CRT, quadratic residues, normal probabilities and the central limit theorem.">
-      <meta name="theme-color" content="#172f50">
-      <title>Math Lab | MathBridge</title>
-      <link rel="stylesheet" href="./css/style.css">
-      <script src="./js/app.js" defer></script>
-      <script src="./js/math-lab.js" defer></script>
-      <script src="./js/advanced-lab.js" defer></script>
-    </head>
-    <body>
-      <a class="skip-link" href="#main">Skip to content</a>
-      <header class="site-header">
-        <div class="container nav">
-          <a class="brand" href="./index.html" aria-label="MathBridge home"><span class="brand-mark" aria-hidden="true">∑</span> MathBridge</a>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-          <nav id="site-nav" class="nav-links" aria-label="Main navigation">
-            <a href="./index.html">Home</a>
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Twelve mathematics tools, including Euler totients, modular powers, generalized CRT, quadratic residues, normal probabilities and the central limit theorem." name="description"/>
+<meta content="#172f50" name="theme-color"/>
+<title>Math Lab | MathBridge</title>
+<link href="./css/style.css" rel="stylesheet"/>
+<script defer="" src="./js/app.js"></script>
+<script defer="" src="./js/math-lab.js"></script>
+<script defer="" src="./js/advanced-lab.js"></script>
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav">
+<a aria-label="MathBridge home" class="brand" href="./index.html"><span aria-hidden="true" class="brand-mark">Σ</span> MathBridge</a>
+<button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" type="button">☰ Menu</button>
+<nav aria-label="Main navigation" class="nav-links" id="site-nav">
+<a href="./index.html">Home</a>
 <a href="./learn.html">Learn</a>
-<a href="./math-lab.html" aria-current="page">Math Lab</a>
+<a aria-current="page" href="./math-lab.html">Math Lab</a>
 <a href="./practice.html">Practice</a>
 <a href="./about.html">About</a>
-          </nav>
-        </div>
-      </header>
-      <main id="main">
-
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Math Lab</div><span class="eyebrow">Math Lab</span><h1>Change the input. See the mathematics.</h1><p class="lead">Twelve hands-on tools in number theory and probability. Explore extended Euclid, solve integer equations, and simulate the law of large numbers. All computations run locally in your browser.</p></div></section>
-<div class="container lab-menu" aria-label="Jump to a math tool">
-  <a href="#euclidean">GCD</a><a href="#extended">Extended Euclid</a>
-  <a href="#diophantine">Integer equations</a><a href="#inverse">Modular inverse</a>
-  <a href="#binomial">Binomial</a><a href="#lln">Law of Large Numbers</a>
-  <a href="#totient">Euler φ</a><a href="#modpow">Modular powers</a><a href="#crt">CRT</a><a href="#quadratic">Quadratic residues</a><a href="#normal">Normal CDF</a><a href="#clt">CLT simulator</a>
+</nav>
+<a class="nav-start" href="./learn.html">Start learning <span aria-hidden="true">↗</span></a></div>
+</header>
+<main id="main">
+<section class="editorial-hero lab-hero"><div class="container editorial-hero-grid"><div class="hero-copy"><span class="eyebrow">EXPLORE · EXPERIMENT · DISCOVER</span><h1>Try the math.<br/><span class="underline-accent">See it work.</span></h1><p class="lead">Twelve interactive tools. Change the inputs, investigate patterns, and see the mathematics behind each answer.</p><div class="hero-actions"><a class="button" href="#lab-tools">Explore tools ↓</a><a class="button button-secondary" href="./practice.html">Practice a problem</a></div></div><div aria-label="Handmade notebook-style collage of mathematics diagrams and learning notes" class="note-collage collage-lab" role="img">
+<div class="paper-note note-grid"><span class="tape"></span><span class="note-center">Change the inputs.<br/><strong>See what happens.</strong></span><span class="stroke"></span></div>
+<div class="paper-note note-mint"><svg aria-hidden="true" viewbox="0 0 155 96"><path d="M30 77 L30 24 L91 14 L122 43 L122 88 L62 88 Z M30 24 L62 55 L122 43 M62 55 V88 M91 14 L62 55" fill="none" stroke="#173454" stroke-linejoin="round" stroke-width="3"></path></svg><span>Try · Observe · Discover</span></div>
+<div class="paper-note note-yellow"><svg aria-hidden="true" viewbox="0 0 160 95"><path d="M15 72 H145 M80 91 V8 M24 27 Q80 140 135 27" fill="none" stroke="#152e50" stroke-linecap="round" stroke-width="4"></path></svg><span>Patterns everywhere ↗</span></div>
+<div class="paper-note note-pink"><svg aria-hidden="true" viewbox="0 0 180 90"><circle cx="72" cy="45" fill="none" r="36" stroke="#173454" stroke-width="4"></circle><circle cx="110" cy="45" fill="none" r="36" stroke="#173454" stroke-width="4"></circle><text x="54" y="53">A</text><text x="124" y="53">B</text></svg><span>Different ideas.<br/>New perspectives.</span></div>
+<div class="paper-note note-purple"><svg aria-hidden="true" viewbox="0 0 170 95"><path d="M30 79 L30 14 L139 79 Z" fill="none" stroke="#173454" stroke-width="4"></path><text x="16" y="54">a</text><text x="80" y="93">b</text><text x="93" y="38">c</text></svg><span>Practice · Build · Improve</span></div>
+<div aria-hidden="true" class="collage-scribble">you can do this! <span>✳</span></div></div></div></section>
+<section class="container section-heading lab-explore-heading"><div><span class="eyebrow">THE MATH LAB</span><h2>Pick a tool and experiment.</h2><p>Every tool below opens a real interactive calculator or simulation.</p></div></section><section aria-label="Browse interactive math tools" class="container tool-gallery"><a class="tool-gallery-card" href="#euclidean"><img alt="" loading="lazy" src="./assets/lesson-art/nt-gcd.svg"/><span class="micro-label">Core</span><strong>Euclidean Algorithm Explorer</strong><p>Repeated division, shown step by step.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#extended"><img alt="" loading="lazy" src="./assets/lesson-art/nt-bezout.svg"/><span class="micro-label">Core</span><strong>Extended Euclidean Algorithm</strong><p>Find Bézout coefficients from remainder steps.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#diophantine"><img alt="" loading="lazy" src="./assets/lesson-art/nt-diophantine.svg"/><span class="micro-label">Core</span><strong>Linear Diophantine Solver</strong><p>Find all integer solutions to ax + by = c.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#inverse"><img alt="" loading="lazy" src="./assets/lesson-art/nt-inverses.svg"/><span class="micro-label">Core</span><strong>Modular Inverse Calculator</strong><p>Determine when a modular inverse exists.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#binomial"><img alt="" loading="lazy" src="./assets/lesson-art/pr-binomial.svg"/><span class="micro-label">Core</span><strong>Binomial Distribution</strong><p>Explore probability bars as n and p change.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#lln"><img alt="" loading="lazy" src="./assets/lesson-art/pr-lln.svg"/><span class="micro-label">Core</span><strong>Law of Large Numbers</strong><p>Watch sample proportions approach their mean.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#totient"><img alt="" loading="lazy" src="./assets/lesson-art/nt-arith-func.svg"/><span class="micro-label">Advanced</span><strong>Euler Totient &amp; Divisor Functions</strong><p>Explore φ, τ, σ, and Möbius functions.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#modpow"><img alt="" loading="lazy" src="./assets/lesson-art/nt-fermat.svg"/><span class="micro-label">Advanced</span><strong>Fast Modular Exponentiation</strong><p>Compute powers with repeated squaring.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#crt"><img alt="" loading="lazy" src="./assets/lesson-art/nt-crt.svg"/><span class="micro-label">Advanced</span><strong>Generalized CRT Solver</strong><p>Combine congruences, even when moduli overlap.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#quadratic"><img alt="" loading="lazy" src="./assets/lesson-art/nt-quadratic.svg"/><span class="micro-label">Advanced</span><strong>Quadratic Residue Explorer</strong><p>Find square roots and Legendre symbols.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#normal"><img alt="" loading="lazy" src="./assets/lesson-art/pr-normal.svg"/><span class="micro-label">Advanced</span><strong>Normal Distribution Explorer</strong><p>Compute areas under the bell curve.</p><span class="tool-gallery-link">Open tool →</span></a><a class="tool-gallery-card" href="#clt"><img alt="" loading="lazy" src="./assets/lesson-art/pr-clt.svg"/><span class="micro-label">Advanced</span><strong>Central Limit Theorem Simulator</strong><p>Compare sample means with the normal limit.</p><span class="tool-gallery-link">Open tool →</span></a></section><div aria-label="Jump to a math tool" class="container lab-menu" id="lab-tools">
+<a href="#euclidean">GCD</a><a href="#extended">Extended Euclid</a>
+<a href="#diophantine">Integer equations</a><a href="#inverse">Modular inverse</a>
+<a href="#binomial">Binomial</a><a href="#lln">Law of Large Numbers</a>
+<a href="#totient">Euler φ</a><a href="#modpow">Modular powers</a><a href="#crt">CRT</a><a href="#quadratic">Quadratic residues</a><a href="#normal">Normal CDF</a><a href="#clt">CLT simulator</a>
 </div>
 <div class="container lab-stack">
-  <section class="lab-card" id="euclidean" aria-labelledby="gcd-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 01</span><h2 id="gcd-title">Euclidean Algorithm Explorer</h2><p>Find the GCD and a pair of Bézout coefficients for two positive integers.</p></div><span class="tag">Step-by-step</span></div>
-    <form id="gcd-form"><div class="field-row"><div class="field"><label for="gcd-a">First integer (a)</label><input id="gcd-a" type="number" step="1" min="1" max="1000000000" value="252" required></div><div class="field"><label for="gcd-b">Second integer (b)</label><input id="gcd-b" type="number" step="1" min="1" max="1000000000" value="105" required></div><button class="button" type="submit">Show steps →</button></div></form>
-    <div class="result" id="gcd-output" role="status" aria-live="polite"></div><p class="field-hint">Try 252 and 105, or enter any positive integers up to 1,000,000,000.</p>
-  </section>
-
-<section class="lab-card" id="extended" aria-labelledby="extended-title">
-  <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 02</span><h2 id="extended-title">Extended Euclidean Algorithm</h2>
-  <p>Track the remainders and Bézout coefficients to construct integers x, y satisfying ax + by = gcd(a, b).</p></div><span class="tag">Coefficient table</span></div>
-  <form id="extended-form" class="field-row">
-    <div class="field"><label for="ext-a">Integer a</label><input type="number" id="ext-a" value="240" step="1" min="-1000000000" max="1000000000" required></div>
-    <div class="field"><label for="ext-b">Integer b</label><input type="number" id="ext-b" value="46" step="1" min="-1000000000" max="1000000000" required></div>
-    <button class="button" type="submit">Find coefficients →</button>
-  </form>
-  <div id="extended-output" class="result" role="status" aria-live="polite"></div>
-  <div class="coefficient-table-wrap" id="extended-table-wrap" aria-live="polite"></div>
-  <p class="field-hint">Try 240, 46 to see 240(−9) + 46(47) = 2. Negative integers and zero are supported (except a = b = 0).</p>
+<section aria-labelledby="gcd-title" class="lab-card" id="euclidean"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 01</span><h2 id="gcd-title">Euclidean Algorithm Explorer</h2><p>Find the GCD and a pair of Bézout coefficients for two positive integers.</p></div><span class="tag">Step-by-step</span></div>
+<form id="gcd-form"><div class="field-row"><div class="field"><label for="gcd-a">First integer (a)</label><input id="gcd-a" max="1000000000" min="1" required="" step="1" type="number" value="252"/></div><div class="field"><label for="gcd-b">Second integer (b)</label><input id="gcd-b" max="1000000000" min="1" required="" step="1" type="number" value="105"/></div><button class="button" type="submit">Show steps →</button></div></form>
+<div aria-live="polite" class="result" id="gcd-output" role="status"></div><p class="field-hint">Try 252 and 105, or enter any positive integers up to 1,000,000,000.</p>
 </section>
-<section class="lab-card" id="diophantine" aria-labelledby="dio-title">
-  <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 03</span><h2 id="dio-title">Linear Diophantine Equation Solver</h2>
-  <p>Solve ax + by = c over the integers. Find a particular solution, then describe every integer solution using a parameter t.</p></div><span class="tag">All solutions</span></div>
-  <form id="dio-form" class="field-row">
-    <div class="field"><label for="dio-a">Coefficient a</label><input id="dio-a" type="number" step="1" min="-1000000000" max="1000000000" value="35" required></div>
-    <div class="field"><label for="dio-b">Coefficient b</label><input id="dio-b" type="number" step="1" min="-1000000000" max="1000000000" value="22" required></div>
-    <div class="field"><label for="dio-c">Constant c</label><input id="dio-c" type="number" step="1" min="-1000000000" max="1000000000" value="1" required></div>
-    <button class="button" type="submit">Solve equation →</button>
-  </form>
-  <div id="dio-output" class="result" role="status" aria-live="polite"></div>
-  <p class="field-hint">The equation has integer solutions precisely when gcd(a,b) divides c, with a special case when a=b=0.</p>
+<section aria-labelledby="extended-title" class="lab-card" id="extended">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 02</span><h2 id="extended-title">Extended Euclidean Algorithm</h2>
+<p>Track the remainders and Bézout coefficients to construct integers x, y satisfying ax + by = gcd(a, b).</p></div><span class="tag">Coefficient table</span></div>
+<form class="field-row" id="extended-form">
+<div class="field"><label for="ext-a">Integer a</label><input id="ext-a" max="1000000000" min="-1000000000" required="" step="1" type="number" value="240"/></div>
+<div class="field"><label for="ext-b">Integer b</label><input id="ext-b" max="1000000000" min="-1000000000" required="" step="1" type="number" value="46"/></div>
+<button class="button" type="submit">Find coefficients →</button>
+</form>
+<div aria-live="polite" class="result" id="extended-output" role="status"></div>
+<div aria-live="polite" class="coefficient-table-wrap" id="extended-table-wrap"></div>
+<p class="field-hint">Try 240, 46 to see 240(−9) + 46(47) = 2. Negative integers and zero are supported (except a = b = 0).</p>
 </section>
-  <section class="lab-card" id="inverse" aria-labelledby="inverse-title"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 04</span><h2 id="inverse-title">Modular Inverse Calculator</h2><p>Find x such that ax ≡ 1 (mod m), or see why no inverse exists.</p></div><span class="tag">Extended Euclid</span></div>
-    <form id="inverse-form"><div class="field-row"><div class="field"><label for="inv-a">Integer (a)</label><input id="inv-a" type="number" step="1" min="-1000000000" max="1000000000" value="3" required></div><div class="field"><label for="inv-m">Modulus (m)</label><input id="inv-m" type="number" step="1" min="2" max="1000000000" value="11" required></div><button type="submit" class="button">Find inverse →</button></div></form>
-    <div class="result" id="inverse-output" role="status" aria-live="polite"></div><p class="field-hint">The inverse exists exactly when gcd(a, m) = 1. Modulus must be at least 2.</p>
-  </section>
-  <section class="lab-card" id="binomial" aria-labelledby="binomial-title"><div class="lab-heading"><div><span class="eyebrow">Probability / Tool 05</span><h2 id="binomial-title">Binomial Distribution Explorer</h2><p>Move the sliders to visualize the probability of exactly k successes in n independent trials.</p></div><span class="tag">Live visualization</span></div>
-    <div class="field-row"><div class="field"><label for="bin-n">Number of trials (n): <output id="n-value" for="bin-n">10</output></label><input id="bin-n" type="range" min="1" max="30" step="1" value="10"></div><div class="field"><label for="bin-p">Success probability (p): <output id="p-value" for="bin-p">0.50</output></label><input id="bin-p" type="range" min="0" max="1" step="0.05" value="0.5"></div><div class="field"><label for="bin-k">Highlight successes (k)</label><input id="bin-k" type="number" min="0" max="10" step="1" value="5"></div></div>
-    <div class="plot-wrap"><svg id="bin-chart" viewBox="0 0 760 320" role="img" aria-label="Binomial probability bar chart"></svg></div>
-    <div class="stats-row"><div class="mini-stat"><span>Expected value E[X]</span><strong id="bin-mean">5.00</strong></div><div class="mini-stat"><span>Variance Var(X)</span><strong id="bin-variance">2.50</strong></div><div class="mini-stat"><span>P(X = k)</span><strong id="bin-probability">0.2461</strong></div></div>
-    <p class="field-hint" id="bin-summary" aria-live="polite">For n = 10 and p = 0.50, the probability of exactly 5 successes is 0.2461.</p>
-  </section>
-
-<section class="lab-card" id="lln" aria-labelledby="lln-title">
-  <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 06</span><h2 id="lln-title">Law of Large Numbers Simulator</h2>
-  <p>Generate independent Bernoulli trials. Watch the observed proportion of successes fluctuate and (typically) stabilize near the true probability p as the sample grows.</p></div><span class="tag">Random simulation</span></div>
-  <div class="field-row">
-    <div class="field"><label for="lln-p">True success probability p: <output id="lln-p-value" for="lln-p">0.60</output></label><input id="lln-p" type="range" min="0" max="1" step="0.05" value="0.60"></div>
-    <div class="field"><label for="lln-trials">Trials per run</label><select id="lln-trials"><option value="100">100 trials</option><option value="500" selected>500 trials</option><option value="1000">1,000 trials</option><option value="5000">5,000 trials</option></select></div>
-    <button id="lln-run" class="button" type="button">Run simulation →</button>
-    <button id="lln-add" class="button button-secondary" type="button">Add 100 trials</button>
-    <button id="lln-reset" class="button button-secondary" type="button">Reset</button>
-  </div>
-  <div class="plot-wrap"><svg id="lln-chart" viewBox="0 0 760 360" role="img" aria-label="Running observed success rate versus trial count and true probability"></svg></div>
-  <div class="stats-row">
-    <div class="mini-stat"><span>Trials</span><strong id="lln-n">0</strong></div>
-    <div class="mini-stat"><span>Successes</span><strong id="lln-successes">0</strong></div>
-    <div class="mini-stat"><span>Observed proportion</span><strong id="lln-proportion">—</strong></div>
-    <div class="mini-stat"><span>Difference from p</span><strong id="lln-error">—</strong></div>
-  </div>
-  <p id="lln-summary" class="field-hint" role="status" aria-live="polite">Click “Run simulation” to start an independent sequence of random trials.</p>
-  <div class="note"><strong>What the theorem means:</strong> For independent Bernoulli trials with fixed probability p, the sample proportion converges to p in probability (and, in fact, almost surely). A single finite run may still wander away from p. Changing p resets the current experiment.</div>
+<section aria-labelledby="dio-title" class="lab-card" id="diophantine">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 03</span><h2 id="dio-title">Linear Diophantine Equation Solver</h2>
+<p>Solve ax + by = c over the integers. Find a particular solution, then describe every integer solution using a parameter t.</p></div><span class="tag">All solutions</span></div>
+<form class="field-row" id="dio-form">
+<div class="field"><label for="dio-a">Coefficient a</label><input id="dio-a" max="1000000000" min="-1000000000" required="" step="1" type="number" value="35"/></div>
+<div class="field"><label for="dio-b">Coefficient b</label><input id="dio-b" max="1000000000" min="-1000000000" required="" step="1" type="number" value="22"/></div>
+<div class="field"><label for="dio-c">Constant c</label><input id="dio-c" max="1000000000" min="-1000000000" required="" step="1" type="number" value="1"/></div>
+<button class="button" type="submit">Solve equation →</button>
+</form>
+<div aria-live="polite" class="result" id="dio-output" role="status"></div>
+<p class="field-hint">The equation has integer solutions precisely when gcd(a,b) divides c, with a special case when a=b=0.</p>
 </section>
-
+<section aria-labelledby="inverse-title" class="lab-card" id="inverse"><div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 04</span><h2 id="inverse-title">Modular Inverse Calculator</h2><p>Find x such that ax ≡ 1 (mod m), or see why no inverse exists.</p></div><span class="tag">Extended Euclid</span></div>
+<form id="inverse-form"><div class="field-row"><div class="field"><label for="inv-a">Integer (a)</label><input id="inv-a" max="1000000000" min="-1000000000" required="" step="1" type="number" value="3"/></div><div class="field"><label for="inv-m">Modulus (m)</label><input id="inv-m" max="1000000000" min="2" required="" step="1" type="number" value="11"/></div><button class="button" type="submit">Find inverse →</button></div></form>
+<div aria-live="polite" class="result" id="inverse-output" role="status"></div><p class="field-hint">The inverse exists exactly when gcd(a, m) = 1. Modulus must be at least 2.</p>
+</section>
+<section aria-labelledby="binomial-title" class="lab-card" id="binomial"><div class="lab-heading"><div><span class="eyebrow">Probability / Tool 05</span><h2 id="binomial-title">Binomial Distribution Explorer</h2><p>Move the sliders to visualize the probability of exactly k successes in n independent trials.</p></div><span class="tag">Live visualization</span></div>
+<div class="field-row"><div class="field"><label for="bin-n">Number of trials (n): <output for="bin-n" id="n-value">10</output></label><input id="bin-n" max="30" min="1" step="1" type="range" value="10"/></div><div class="field"><label for="bin-p">Success probability (p): <output for="bin-p" id="p-value">0.50</output></label><input id="bin-p" max="1" min="0" step="0.05" type="range" value="0.5"/></div><div class="field"><label for="bin-k">Highlight successes (k)</label><input id="bin-k" max="10" min="0" step="1" type="number" value="5"/></div></div>
+<div class="plot-wrap"><svg aria-label="Binomial probability bar chart" id="bin-chart" role="img" viewbox="0 0 760 320"></svg></div>
+<div class="stats-row"><div class="mini-stat"><span>Expected value E[X]</span><strong id="bin-mean">5.00</strong></div><div class="mini-stat"><span>Variance Var(X)</span><strong id="bin-variance">2.50</strong></div><div class="mini-stat"><span>P(X = k)</span><strong id="bin-probability">0.2461</strong></div></div>
+<p aria-live="polite" class="field-hint" id="bin-summary">For n = 10 and p = 0.50, the probability of exactly 5 successes is 0.2461.</p>
+</section>
+<section aria-labelledby="lln-title" class="lab-card" id="lln">
+<div class="lab-heading"><div><span class="eyebrow">Probability / Tool 06</span><h2 id="lln-title">Law of Large Numbers Simulator</h2>
+<p>Generate independent Bernoulli trials. Watch the observed proportion of successes fluctuate and (typically) stabilize near the true probability p as the sample grows.</p></div><span class="tag">Random simulation</span></div>
+<div class="field-row">
+<div class="field"><label for="lln-p">True success probability p: <output for="lln-p" id="lln-p-value">0.60</output></label><input id="lln-p" max="1" min="0" step="0.05" type="range" value="0.60"/></div>
+<div class="field"><label for="lln-trials">Trials per run</label><select id="lln-trials"><option value="100">100 trials</option><option selected="" value="500">500 trials</option><option value="1000">1,000 trials</option><option value="5000">5,000 trials</option></select></div>
+<button class="button" id="lln-run" type="button">Run simulation →</button>
+<button class="button button-secondary" id="lln-add" type="button">Add 100 trials</button>
+<button class="button button-secondary" id="lln-reset" type="button">Reset</button>
+</div>
+<div class="plot-wrap"><svg aria-label="Running observed success rate versus trial count and true probability" id="lln-chart" role="img" viewbox="0 0 760 360"></svg></div>
+<div class="stats-row">
+<div class="mini-stat"><span>Trials</span><strong id="lln-n">0</strong></div>
+<div class="mini-stat"><span>Successes</span><strong id="lln-successes">0</strong></div>
+<div class="mini-stat"><span>Observed proportion</span><strong id="lln-proportion">—</strong></div>
+<div class="mini-stat"><span>Difference from p</span><strong id="lln-error">—</strong></div>
+</div>
+<p aria-live="polite" class="field-hint" id="lln-summary" role="status">Click “Run simulation” to start an independent sequence of random trials.</p>
+<div class="note"><strong>What the theorem means:</strong> For independent Bernoulli trials with fixed probability p, the sample proportion converges to p in probability (and, in fact, almost surely). A single finite run may still wander away from p. Changing p resets the current experiment.</div>
+</section>
 <!-- Version 2.3 advanced interactive mathematics tools -->
-<section class="lab-card" id="totient" aria-labelledby="totient-title">
- <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 07 · Advanced</span><h2 id="totient-title">Euler Totient &amp; Divisor Explorer</h2><p>Factor n and compute φ(n), τ(n), σ(n), and the sum of the Möbius function across divisors.</p></div><span class="tag">Arithmetic functions</span></div>
- <form id="totient-form" class="field-row"><div class="field"><label for="totient-n">Positive integer n</label><input id="totient-n" type="number" min="1" max="1000000000" step="1" value="360" required></div><button class="button" type="submit">Explore factors →</button></form>
- <div class="result" id="totient-output" aria-live="polite"></div><p class="field-hint">Valid for 1 ≤ n ≤ 1,000,000,000; calculated by integer prime factorization.</p>
+<section aria-labelledby="totient-title" class="lab-card" id="totient">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 07 · Advanced</span><h2 id="totient-title">Euler Totient &amp; Divisor Explorer</h2><p>Factor n and compute φ(n), τ(n), σ(n), and the sum of the Möbius function across divisors.</p></div><span class="tag">Arithmetic functions</span></div>
+<form class="field-row" id="totient-form"><div class="field"><label for="totient-n">Positive integer n</label><input id="totient-n" max="1000000000" min="1" required="" step="1" type="number" value="360"/></div><button class="button" type="submit">Explore factors →</button></form>
+<div aria-live="polite" class="result" id="totient-output"></div><p class="field-hint">Valid for 1 ≤ n ≤ 1,000,000,000; calculated by integer prime factorization.</p>
 </section>
-<section class="lab-card" id="modpow" aria-labelledby="modpow-title">
- <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 08 · Advanced</span><h2 id="modpow-title">Fast Modular Exponentiation</h2><p>Compute a^e modulo m using binary exponentiation, without ever expanding a giant power.</p></div><span class="tag">Repeated squaring</span></div>
- <form id="modpow-form" class="field-row"><div class="field"><label for="pow-a">Base a</label><input id="pow-a" type="number" step="1" value="7" required></div><div class="field"><label for="pow-e">Exponent e ≥ 0</label><input id="pow-e" type="number" min="0" max="1000000000000" step="1" value="128" required></div><div class="field"><label for="pow-m">Modulus m ≥ 2</label><input id="pow-m" type="number" min="2" max="1000000000" step="1" value="13" required></div><button class="button" type="submit">Calculate →</button></form>
- <div class="result" id="modpow-output" aria-live="polite"></div>
+<section aria-labelledby="modpow-title" class="lab-card" id="modpow">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 08 · Advanced</span><h2 id="modpow-title">Fast Modular Exponentiation</h2><p>Compute a^e modulo m using binary exponentiation, without ever expanding a giant power.</p></div><span class="tag">Repeated squaring</span></div>
+<form class="field-row" id="modpow-form"><div class="field"><label for="pow-a">Base a</label><input id="pow-a" required="" step="1" type="number" value="7"/></div><div class="field"><label for="pow-e">Exponent e ≥ 0</label><input id="pow-e" max="1000000000000" min="0" required="" step="1" type="number" value="128"/></div><div class="field"><label for="pow-m">Modulus m ≥ 2</label><input id="pow-m" max="1000000000" min="2" required="" step="1" type="number" value="13"/></div><button class="button" type="submit">Calculate →</button></form>
+<div aria-live="polite" class="result" id="modpow-output"></div>
 </section>
-<section class="lab-card" id="crt" aria-labelledby="crt-title">
- <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 09 · Advanced</span><h2 id="crt-title">Generalized Chinese Remainder Theorem</h2><p>Find all integers x satisfying two congruences, including the case of non-coprime moduli.</p></div><span class="tag">Compatible congruences</span></div>
- <form id="crt-form" class="field-row"><div class="field"><label for="crt-a">x ≡ a (mod m)</label><input id="crt-a" type="number" value="1" step="1" required></div><div class="field"><label for="crt-m">Modulus m</label><input id="crt-m" type="number" min="2" max="1000000000" value="4" required></div><div class="field"><label for="crt-b">x ≡ b (mod n)</label><input id="crt-b" type="number" value="3" step="1" required></div><div class="field"><label for="crt-n">Modulus n</label><input id="crt-n" type="number" min="2" max="1000000000" value="6" required></div><button class="button" type="submit">Combine →</button></form>
- <div class="result" id="crt-output" aria-live="polite"></div>
+<section aria-labelledby="crt-title" class="lab-card" id="crt">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 09 · Advanced</span><h2 id="crt-title">Generalized Chinese Remainder Theorem</h2><p>Find all integers x satisfying two congruences, including the case of non-coprime moduli.</p></div><span class="tag">Compatible congruences</span></div>
+<form class="field-row" id="crt-form"><div class="field"><label for="crt-a">x ≡ a (mod m)</label><input id="crt-a" required="" step="1" type="number" value="1"/></div><div class="field"><label for="crt-m">Modulus m</label><input id="crt-m" max="1000000000" min="2" required="" type="number" value="4"/></div><div class="field"><label for="crt-b">x ≡ b (mod n)</label><input id="crt-b" required="" step="1" type="number" value="3"/></div><div class="field"><label for="crt-n">Modulus n</label><input id="crt-n" max="1000000000" min="2" required="" type="number" value="6"/></div><button class="button" type="submit">Combine →</button></form>
+<div aria-live="polite" class="result" id="crt-output"></div>
 </section>
-<section class="lab-card" id="quadratic" aria-labelledby="quadratic-title">
- <div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 10 · Advanced</span><h2 id="quadratic-title">Quadratic Residues &amp; Euler's Criterion</h2><p>Determine whether a is a square modulo an odd prime p and display every square root.</p></div><span class="tag">Legendre symbol</span></div>
- <form id="quadratic-form" class="field-row"><div class="field"><label for="qr-a">Integer a</label><input id="qr-a" type="number" value="2" step="1" required></div><div class="field"><label for="qr-p">Odd prime p (≤ 997)</label><input id="qr-p" type="number" min="3" max="997" value="7" step="1" required></div><button class="button" type="submit">Find residues →</button></form>
- <div class="result" id="quadratic-output" aria-live="polite"></div><p class="field-hint">Legendre symbol is displayed only when a is nonzero modulo p; otherwise symbol equals 0.</p>
+<section aria-labelledby="quadratic-title" class="lab-card" id="quadratic">
+<div class="lab-heading"><div><span class="eyebrow">Number Theory / Tool 10 · Advanced</span><h2 id="quadratic-title">Quadratic Residues &amp; Euler's Criterion</h2><p>Determine whether a is a square modulo an odd prime p and display every square root.</p></div><span class="tag">Legendre symbol</span></div>
+<form class="field-row" id="quadratic-form"><div class="field"><label for="qr-a">Integer a</label><input id="qr-a" required="" step="1" type="number" value="2"/></div><div class="field"><label for="qr-p">Odd prime p (≤ 997)</label><input id="qr-p" max="997" min="3" required="" step="1" type="number" value="7"/></div><button class="button" type="submit">Find residues →</button></form>
+<div aria-live="polite" class="result" id="quadratic-output"></div><p class="field-hint">Legendre symbol is displayed only when a is nonzero modulo p; otherwise symbol equals 0.</p>
 </section>
-<section class="lab-card" id="normal" aria-labelledby="normal-title">
- <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 11 · Advanced</span><h2 id="normal-title">Normal Distribution Probability Explorer</h2><p>Standardize interval endpoints and approximate P(a ≤ X ≤ b) for X ~ N(μ, σ²).</p></div><span class="tag">Normal CDF</span></div>
- <form id="normal-form" class="field-row"><div class="field"><label for="normal-mu">Mean μ</label><input id="normal-mu" type="number" value="0" step="any" required></div><div class="field"><label for="normal-sigma">Standard deviation σ</label><input id="normal-sigma" type="number" value="1" min="0.000001" step="any" required></div><div class="field"><label for="normal-a">Lower endpoint a</label><input id="normal-a" type="number" value="-1" step="any" required></div><div class="field"><label for="normal-b">Upper endpoint b</label><input id="normal-b" type="number" value="1" step="any" required></div><button class="button" type="submit">Find probability →</button></form>
- <div class="result" id="normal-output" aria-live="polite"></div><div class="plot-wrap"><svg id="normal-chart" viewBox="0 0 760 260" role="img" aria-label="Normal density curve with highlighted probability interval"></svg></div>
- <p class="field-hint">CDF computed with a standard numerical approximation; displayed values are approximate.</p>
+<section aria-labelledby="normal-title" class="lab-card" id="normal">
+<div class="lab-heading"><div><span class="eyebrow">Probability / Tool 11 · Advanced</span><h2 id="normal-title">Normal Distribution Probability Explorer</h2><p>Standardize interval endpoints and approximate P(a ≤ X ≤ b) for X ~ N(μ, σ²).</p></div><span class="tag">Normal CDF</span></div>
+<form class="field-row" id="normal-form"><div class="field"><label for="normal-mu">Mean μ</label><input id="normal-mu" required="" step="any" type="number" value="0"/></div><div class="field"><label for="normal-sigma">Standard deviation σ</label><input id="normal-sigma" min="0.000001" required="" step="any" type="number" value="1"/></div><div class="field"><label for="normal-a">Lower endpoint a</label><input id="normal-a" required="" step="any" type="number" value="-1"/></div><div class="field"><label for="normal-b">Upper endpoint b</label><input id="normal-b" required="" step="any" type="number" value="1"/></div><button class="button" type="submit">Find probability →</button></form>
+<div aria-live="polite" class="result" id="normal-output"></div><div class="plot-wrap"><svg aria-label="Normal density curve with highlighted probability interval" id="normal-chart" role="img" viewbox="0 0 760 260"></svg></div>
+<p class="field-hint">CDF computed with a standard numerical approximation; displayed values are approximate.</p>
 </section>
-<section class="lab-card" id="clt" aria-labelledby="clt-title">
- <div class="lab-heading"><div><span class="eyebrow">Probability / Tool 12 · Advanced</span><h2 id="clt-title">Central Limit Theorem Simulator</h2><p>Sample averages of independent Uniform(0,1) variables. Compare standardized averages to N(0,1).</p></div><span class="tag">Monte Carlo simulation</span></div>
- <div class="field-row"><div class="field"><label for="clt-n">Sample size n</label><input id="clt-n" type="range" min="1" max="60" step="1" value="12"><output id="clt-n-value">12</output></div><div class="field"><label for="clt-reps">Independent repetitions</label><select id="clt-reps"><option value="250">250</option><option value="1000" selected>1,000</option><option value="2500">2,500</option></select></div><button id="clt-run" class="button" type="button">Run CLT experiment →</button></div>
- <div class="plot-wrap"><svg id="clt-chart" viewBox="0 0 760 325" role="img" aria-label="Histogram of standardized sample means compared with the standard normal density"></svg></div>
- <div class="stats-row"><div class="mini-stat"><span>Mean of standardized values</span><strong id="clt-mean">—</strong></div><div class="mini-stat"><span>Variance of standardized values</span><strong id="clt-variance">—</strong></div></div><p id="clt-summary" class="field-hint" aria-live="polite">Press Run to generate independent samples. Bars are simulated; the red curve is the standard normal density.</p>
- <div class="note"><strong>Mathematical note:</strong> For each repetition, Z = √(12n)(X̄−1/2). The CLT predicts Z approaches a standard normal distribution as n grows, not that finite-n data become exactly normal.</div>
+<section aria-labelledby="clt-title" class="lab-card" id="clt">
+<div class="lab-heading"><div><span class="eyebrow">Probability / Tool 12 · Advanced</span><h2 id="clt-title">Central Limit Theorem Simulator</h2><p>Sample averages of independent Uniform(0,1) variables. Compare standardized averages to N(0,1).</p></div><span class="tag">Monte Carlo simulation</span></div>
+<div class="field-row"><div class="field"><label for="clt-n">Sample size n</label><input id="clt-n" max="60" min="1" step="1" type="range" value="12"/><output id="clt-n-value">12</output></div><div class="field"><label for="clt-reps">Independent repetitions</label><select id="clt-reps"><option value="250">250</option><option selected="" value="1000">1,000</option><option value="2500">2,500</option></select></div><button class="button" id="clt-run" type="button">Run CLT experiment →</button></div>
+<div class="plot-wrap"><svg aria-label="Histogram of standardized sample means compared with the standard normal density" id="clt-chart" role="img" viewbox="0 0 760 325"></svg></div>
+<div class="stats-row"><div class="mini-stat"><span>Mean of standardized values</span><strong id="clt-mean">—</strong></div><div class="mini-stat"><span>Variance of standardized values</span><strong id="clt-variance">—</strong></div></div><p aria-live="polite" class="field-hint" id="clt-summary">Press Run to generate independent samples. Bars are simulated; the red curve is the standard normal density.</p>
+<div class="note"><strong>Mathematical note:</strong> For each repetition, Z = √(12n)(X̄−1/2). The CLT predicts Z approaches a standard normal distribution as n grows, not that finite-n data become exactly normal.</div>
 </section>
 </div>
-
-      </main>
-      <footer class="site-footer">
-        <div class="container footer-inner">
-          <p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
-          <div class="footer-links">
-            <a href="./about.html">About</a>
-            <a href="./practice.html">Practice</a>
-            <a href="https://github.com/yanjiahuang722/mathbridge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          </div>
-        </div>
-      </footer>
-    </body>
-    </html>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
+<div class="footer-links">
+<a href="./about.html">About</a>
+<a href="./practice.html">Practice</a>
+<a href="https://github.com/yanjiahuang722/mathbridge" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

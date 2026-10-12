@@ -77,7 +77,16 @@
         const prompt = document.createElement('span'); prompt.textContent='Worked example + 3 questions';
         const arrow = document.createElement('span'); arrow.textContent='Explore →';
         foot.append(prompt, arrow);
-        link.append(top,h,p,foot); grid.append(link);
+        // Each of the 55 guided lessons has its own math-specific SVG illustration.
+        const illustration = document.createElement('div');
+        illustration.className = 'lesson-illustration';
+        const img = document.createElement('img');
+        img.src = `./assets/lesson-art/${encodeURIComponent(lesson.id)}.svg`;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        illustration.append(img);
+        link.append(top,illustration,h,p,foot); grid.append(link);
       });
       section.append(header,grid); catalog.append(section);
     });

@@ -1,74 +1,77 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="An interactive practice bank of introductory and advanced mathematics questions with subjects, difficulty filters, worked explanations and saved progress.">
-      <meta name="theme-color" content="#172f50">
-      <title>Practice | MathBridge</title>
-      <link rel="stylesheet" href="./css/style.css">
-      <script src="./js/app.js" defer></script>
-      <script src="./js/questions-data.js" defer></script>
-      <script src="./js/advanced-questions.js" defer></script>
-      <script src="./js/practice.js" defer></script>
-    </head>
-    <body>
-      <a class="skip-link" href="#main">Skip to content</a>
-      <header class="site-header">
-        <div class="container nav">
-          <a class="brand" href="./index.html" aria-label="MathBridge home"><span class="brand-mark" aria-hidden="true">∑</span> MathBridge</a>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-          <nav id="site-nav" class="nav-links" aria-label="Main navigation">
-            <a href="./index.html">Home</a>
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="An interactive practice bank of introductory and advanced mathematics questions with subjects, difficulty filters, worked explanations and saved progress." name="description"/>
+<meta content="#172f50" name="theme-color"/>
+<title>Practice | MathBridge</title>
+<link href="./css/style.css" rel="stylesheet"/>
+<script defer="" src="./js/app.js"></script>
+<script defer="" src="./js/questions-data.js"></script>
+<script defer="" src="./js/advanced-questions.js"></script>
+<script defer="" src="./js/practice.js"></script>
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav">
+<a aria-label="MathBridge home" class="brand" href="./index.html"><span aria-hidden="true" class="brand-mark">Σ</span> MathBridge</a>
+<button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" type="button">☰ Menu</button>
+<nav aria-label="Main navigation" class="nav-links" id="site-nav">
+<a href="./index.html">Home</a>
 <a href="./learn.html">Learn</a>
 <a href="./math-lab.html">Math Lab</a>
-<a href="./practice.html" aria-current="page">Practice</a>
+<a aria-current="page" href="./practice.html">Practice</a>
 <a href="./about.html">About</a>
-          </nav>
-        </div>
-      </header>
-      <main id="main">
-
-
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="./index.html">Home</a> / Practice</div><span class="eyebrow">Practice studio</span><h1>Practice the idea, not just the answer.</h1><p class="lead">165 original questions across Number Theory and Probability, including advanced topics. Select a subject and difficulty, choose a short or long set, and see explanations for every answer.</p></div></section>
+</nav>
+<a class="nav-start" href="./learn.html">Start learning <span aria-hidden="true">↗</span></a></div>
+</header>
+<main id="main">
+<section class="editorial-hero practice-hero"><div class="container editorial-hero-grid"><div class="hero-copy"><span class="eyebrow">PRACTICE · GET FEEDBACK · GROW</span><h1>Practice with<br/><span class="underline-accent">purpose.</span></h1><p class="lead">Build mathematical confidence by solving problems, using hints, reviewing explanations, and learning from mistakes.</p><div class="hero-actions"><a class="button" href="#practice-session">Set up a practice session ↓</a><a class="button button-secondary" href="./learn.html">Browse lessons</a></div></div><div aria-label="Handmade notebook-style collage of mathematics diagrams and learning notes" class="note-collage collage-practice" role="img">
+<div class="paper-note note-grid"><span class="tape"></span><span class="note-center">Make mistakes.<br/><strong>Learn and grow.</strong></span><span class="stroke"></span></div>
+<div class="paper-note note-mint"><svg aria-hidden="true" viewbox="0 0 155 96"><path d="M30 77 L30 24 L91 14 L122 43 L122 88 L62 88 Z M30 24 L62 55 L122 43 M62 55 V88 M91 14 L62 55" fill="none" stroke="#173454" stroke-linejoin="round" stroke-width="3"></path></svg><span>Think · Try · Check</span></div>
+<div class="paper-note note-yellow"><svg aria-hidden="true" viewbox="0 0 160 95"><path d="M15 72 H145 M80 91 V8 M24 27 Q80 140 135 27" fill="none" stroke="#152e50" stroke-linecap="round" stroke-width="4"></path></svg><span>Patterns everywhere ↗</span></div>
+<div class="paper-note note-pink"><svg aria-hidden="true" viewbox="0 0 180 90"><circle cx="72" cy="45" fill="none" r="36" stroke="#173454" stroke-width="4"></circle><circle cx="110" cy="45" fill="none" r="36" stroke="#173454" stroke-width="4"></circle><text x="54" y="53">A</text><text x="124" y="53">B</text></svg><span>Different ideas.<br/>New perspectives.</span></div>
+<div class="paper-note note-purple"><svg aria-hidden="true" viewbox="0 0 170 95"><path d="M30 79 L30 14 L139 79 Z" fill="none" stroke="#173454" stroke-width="4"></path><text x="16" y="54">a</text><text x="80" y="93">b</text><text x="93" y="38">c</text></svg><span>Practice · Build · Improve</span></div>
+<div aria-hidden="true" class="collage-scribble">you can do this! <span>✳</span></div></div></div></section>
 <div class="container practice-workspace">
-  <section class="practice-panel" aria-labelledby="practice-settings-title">
-    <div class="practice-panel-heading"><div><span class="eyebrow">Create a question set</span><h2 id="practice-settings-title">Your practice session</h2></div><span class="tag">No account needed</span></div>
-    <div class="practice-controls">
-      <div class="field"><label for="topic-filter">Subject</label><select id="topic-filter"><option value="all">All subjects</option><option value="Number Theory">Number Theory</option><option value="Probability">Probability</option></select></div>
-      <div class="field"><label for="stage-filter">Course level</label><select id="stage-filter"><option value="all">All topics</option><option value="Foundation">Foundations</option><option value="Advanced">Advanced</option></select></div>
-      <div class="field"><label for="unit-filter">Specific topic</label><select id="unit-filter"><option value="all">All topics</option></select></div>
-      <div class="field"><label for="level-filter">Difficulty</label><select id="level-filter"><option value="all">All levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
-      <div class="field"><label for="count-filter">Questions per set</label><select id="count-filter"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions</option><option value="all">All matching questions</option></select></div>
-      <button type="button" class="button" id="new-session">Generate question set →</button>
-    </div>
-    <p id="selection-note" class="field-hint" role="status" aria-live="polite">Select filters to start practicing.</p>
-    <div class="practice-metrics">
-      <div class="practice-metric"><span>Session result</span><strong id="score">0 / 0</strong></div>
-      <div class="practice-metric"><span>Session accuracy</span><strong id="accuracy">—</strong></div>
-      <div class="practice-metric"><span>Questions checked</span><strong id="session-count">0 / 10</strong></div>
-      <div class="practice-metric"><span>All-time attempts (this browser)</span><strong id="lifetime">0</strong></div>
-    </div>
-    <div class="practice-progress-track" role="progressbar" aria-label="Session questions completed" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="practice-progress"><div id="practice-progress-fill"></div></div>
-    <div class="practice-privacy"><span>Progress is stored only in this browser and is never sent to a server.</span> <button id="clear-practice" class="button-link" type="button">Clear practice history</button></div>
-  </section>
-  <div class="practice-section-title"><div><span class="eyebrow">Your question set</span><h2>Think. Try. Check.</h2></div><span id="question-count-label" class="tag">10 questions</span></div>
-  <div id="practice-list" class="practice-list"></div>
-  <div id="session-finish" class="session-finish" hidden aria-live="polite"></div>
-  <noscript><p class="note">Please enable JavaScript to use the interactive questions.</p></noscript>
+<section aria-labelledby="practice-settings-title" class="practice-panel" id="practice-session">
+<div class="practice-panel-heading"><div><span class="eyebrow">Create a question set</span><h2 id="practice-settings-title">Your practice session</h2></div><span class="tag">No account needed</span></div>
+<div class="practice-controls">
+<div class="field"><label for="topic-filter">Subject</label><select id="topic-filter"><option value="all">All subjects</option><option value="Number Theory">Number Theory</option><option value="Probability">Probability</option></select></div>
+<div class="field"><label for="stage-filter">Course level</label><select id="stage-filter"><option value="all">All topics</option><option value="Foundation">Foundations</option><option value="Advanced">Advanced</option></select></div>
+<div class="field"><label for="unit-filter">Specific topic</label><select id="unit-filter"><option value="all">All topics</option></select></div>
+<div class="field"><label for="level-filter">Difficulty</label><select id="level-filter"><option value="all">All levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
+<div class="field"><label for="count-filter">Questions per set</label><select id="count-filter"><option value="5">5 questions</option><option selected="" value="10">10 questions</option><option value="20">20 questions</option><option value="all">All matching questions</option></select></div>
+<button class="button" id="new-session" type="button">Generate question set →</button>
 </div>
-
-
-      </main>
-      <footer class="site-footer">
-        <div class="container footer-inner">
-          <p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
-          <div class="footer-links">
-            <a href="./about.html">About</a>
-            <a href="./practice.html">Practice</a>
-            <a href="https://github.com/yanjiahuang722/mathbridge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          </div>
-        </div>
-      </footer>
-    </body>
-    </html>
+<p aria-live="polite" class="field-hint" id="selection-note" role="status">Select filters to start practicing.</p>
+<div class="practice-metrics">
+<div class="practice-metric"><span>Session result</span><strong id="score">0 / 0</strong></div>
+<div class="practice-metric"><span>Session accuracy</span><strong id="accuracy">—</strong></div>
+<div class="practice-metric"><span>Questions checked</span><strong id="session-count">0 / 10</strong></div>
+<div class="practice-metric"><span>All-time attempts (this browser)</span><strong id="lifetime">0</strong></div>
+</div>
+<div aria-label="Session questions completed" aria-valuemax="10" aria-valuemin="0" aria-valuenow="0" class="practice-progress-track" id="practice-progress" role="progressbar"><div id="practice-progress-fill"></div></div>
+<div class="practice-privacy"><span>Progress is stored only in this browser and is never sent to a server.</span> <button class="button-link" id="clear-practice" type="button">Clear practice history</button></div>
+</section>
+<div class="practice-section-title"><div><span class="eyebrow">Your question set</span><h2>Think. Try. Check.</h2></div><span class="tag" id="question-count-label">10 questions</span></div>
+<div class="practice-list" id="practice-list"></div>
+<div aria-live="polite" class="session-finish" hidden="" id="session-finish"></div>
+<noscript><p class="note">Please enable JavaScript to use the interactive questions.</p></noscript>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p><strong>MathBridge</strong> · Open-access math learning, built with curiosity.</p>
+<div class="footer-links">
+<a href="./about.html">About</a>
+<a href="./practice.html">Practice</a>
+<a href="https://github.com/yanjiahuang722/mathbridge" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

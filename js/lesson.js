@@ -28,6 +28,8 @@
   document.title = `${lesson.title} | MathBridge Learn`;
   $('breadcrumb-lesson').textContent = lesson.title;
   $('lesson-kicker').textContent = lesson.subject + ' / Guided lesson';
+  const lessonArt = document.getElementById('lesson-topic-art');
+  if (lessonArt) lessonArt.src = `./assets/lesson-art/${encodeURIComponent(lesson.id)}.svg`;
   $('lesson-title').textContent = lesson.title;
   $('lesson-summary').textContent = lesson.summary;
   $('lesson-metadata').textContent = `${lesson.minutes} min read  ·  ${lesson.level}  ·  3 checkpoint questions`;
