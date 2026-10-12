@@ -604,3 +604,22 @@ p,.lead{color:#596980}.lead{font-size:1.07rem;line-height:1.75}
   .lesson-banner > .container { padding: 24px 19px; }
   .lesson-banner-symbol { width: 100%; max-width: 420px; }
 }
+
+/* 2.4.2: balanced, accessible notes. All mathematical artwork is on 600×260 canvases. */
+.note-pink { padding: 9px 11px; }
+.note-pink > span:not(.tape):not(.stroke) { max-width: 100%; text-wrap: balance; overflow-wrap: normal; line-height:1.12; }
+.paper-note.note-pink svg { height: 76px; flex-basis:76px; }
+.lesson-illustration img { object-fit:contain; }
+.lesson-banner-symbol img { object-fit:contain; }
+.preview-card > img { object-fit:contain; }
+.tool-gallery-card img { object-fit:contain; }
+@media(max-width:600px) {
+ .paper-note.note-pink svg { height: 49px; flex-basis:49px; }
+ .note-pink > span:not(.tape):not(.stroke) { font-size: 9.5px!important; line-height:1.14!important; }
+}
+/* Let the pink note sit above the central sheet so its wording is legible at narrow widths. */
+@media(max-width:600px) { .note-pink { z-index:7; } }
+@media(max-width:600px) {
+ .note-grid { inset: 19px 65px 17px 98px; }
+ .note-grid .note-center { font-size: 18px!important; }
+}
